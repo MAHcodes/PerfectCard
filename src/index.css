@@ -1,8 +1,32 @@
 :root {
   --bg-sec: 245, 245, 245;
   --bg-main: 255, 255, 255;
+  --gray: 200, 200, 200;
+  --transition-d: 250ms;
+  --transition-tf: ease-in-out;
+  --fz-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
+  --fz-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+  --fz-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+  --fz-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+  --fz-xl: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
+  --fz-xxl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+  --fz-xxxl: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"),
+    url(./assets/fonts/Inter-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 800;
+  src: local("Inter"),
+    url(./assets/fonts/Inter-Bold.ttf) format("truetype");
 }
 
 html {
   background-color: rgb(var(--bg-sec));
+  font-family: Inter, 'Times New Roman', Times, serif;
 }
