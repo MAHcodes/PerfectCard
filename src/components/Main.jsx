@@ -2,9 +2,9 @@ import Preview from "./Preview";
 import Code from "./Code";
 import styled from "styled-components";
 
-const Main = () => {
+const Main = ({ asideOpen }) => {
   return (
-    <StyledMain>
+    <StyledMain asideOpen={asideOpen}>
       <Preview />
       <Code />
     </StyledMain>
@@ -12,7 +12,7 @@ const Main = () => {
 }
 
 const StyledMain = styled.main`
-  flex: .8;
+  flex: ${props => props.asideOpen ? ".8" : "1"};
 `
 
 export default Main
