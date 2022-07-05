@@ -11,6 +11,9 @@ const Button = ({val, action}) => {
 
 const Btn = styled.button`
   cursor: pointer;
+  padding: .25rem;
+  display: grid;
+  place-items: center;
 `
 
 

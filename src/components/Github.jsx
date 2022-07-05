@@ -32,9 +32,9 @@ const wave = keyframes`
 `
 
 const Svg = styled.svg`
- position: absolute;
- top: 0;
- right: 0;
+ position: fixed;
+ top: -1px;
+ right: -1px;
  z-index: 10;
 
  & path:nth-child(2) {
