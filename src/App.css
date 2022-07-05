@@ -1,0 +1,12 @@
+#app {
+  display: flex;
+  align-items: stretch;
+}
+
+#main {
+  flex: .8;
+}
+
+#aside {
+  flex: .2;
+}
