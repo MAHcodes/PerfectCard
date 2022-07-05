@@ -1,0 +1,8 @@
+:root {
+  --bg-sec: 245, 245, 245;
+  --bg-main: 255, 255, 255;
+}
+
+html {
+  background-color: rgb(var(--bg-sec));
+}

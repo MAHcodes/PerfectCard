@@ -1,14 +1,19 @@
-import './App.css';
+import styled from 'styled-components';
 import Aside from "./components/Aside";
 import Main from "./components/Main";
 
 function App() {
   return (
-    <div id="app">
+    <StyledApp>
       <Aside />
       <Main />
-    </div>
+    </StyledApp>
   );
 }
+
+const StyledApp = styled.div`
+  display: flex;
+  align-items: stretch;
+`
 
 export default App;
