@@ -1,8 +1,4 @@
 :root {
-  --bg-sec: 223, 230, 238;
-  --bg-main: 237, 242, 247;
-  --fg-main: 49, 63, 78;
-  --gray: 200, 200, 200;
   --transition-d: 250ms;
   --transition-tf: ease-in-out;
   --fz-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
@@ -14,21 +10,43 @@
   --fz-xxxl: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
 }
 
+body.dark {
+  --bg-sec: 23, 30, 45;
+  --bg-main: 17, 24, 39;
+  --fg-main: 237, 242, 247;
+  --gray: 75, 75, 75;
+}
+
+body.light {
+  --bg-sec: 223, 230, 238;
+  --bg-main: 237, 242, 247;
+  --fg-main: 49, 63, 78;
+  --gray: 200, 200, 200;
+}
+
 @font-face {
   font-family: "Inter";
-  src: local("Inter"),
-    url(./assets/fonts/Inter-Regular.ttf) format("truetype");
+  src: local("Inter"), url(./assets/fonts/Inter-Regular.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Inter";
   font-weight: 800;
-  src: local("Inter"),
-    url(./assets/fonts/Inter-Bold.ttf) format("truetype");
+  src: local("Inter"), url(./assets/fonts/Inter-Bold.ttf) format("truetype");
 }
 
 html {
   background-color: rgb(var(--bg-sec));
-  font-family: Inter, 'Times New Roman', Times, serif;
-  color: rgb(var(--fg-main))
+  font-family: Inter, "Times New Roman", Times, serif;
+}
+
+body {
+  background-color: rgb(var(--bg-sec));
+  background-image: radial-gradient(rgb(var(--gray)) .5px,rgb(var(--bg-sec)) 1px);
+  background-size: 20px 20px;
+  color: rgb(var(--fg-main));
+}
+
+* {
+  transition: background-color var(--transition-d) var(--transition-tf);
 }

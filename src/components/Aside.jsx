@@ -29,7 +29,7 @@ const Arrow = ({open}) => (
 const StyledAside = styled.aside`
   background-color: rgb(var(--bg-main));
   position: relative;
-  flex: ${(props) => (props.open ? ".2" : "0")};
+  flex: ${(props) => (props.open ? ".25" : "0")};
   transform: translateX(${(props) => (props.open ? "0" : "-100%")});
   border-right: 1px solid rgb(var(--gray));
   transition: var(--transition-d) var(--transition-tf);
