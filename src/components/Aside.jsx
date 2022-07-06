@@ -1,13 +1,21 @@
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 
 const Aside = ({ open, setOpen }) => {
+  const wrapperRef = useRef(undefined);
+  useEffect(() => {
+    wrapperRef.current.style.height = `${window.innerHeight}px`;
+    // eslint-disable-next-line
+  }, [window.innerHeight]);
+
   return (
     <StyledAside open={open}>
       <Button val={<Arrow open={open} />} action={() => setOpen(!open)} />
-      <Wrapper>
+      <Wrapper ref={wrapperRef} >
         <H1>Perfect Card</H1>
         <P>Easiest way to create your Perfect Card.</P>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis reprehenderit totam debitis sit pariatur est adipisci labore veritatis laboriosam voluptatibus molestias quo inventore, voluptates corrupti quod ea quidem animi sunt veniam dolor ratione nisi at magnam? Maiores doloribus, ad obcaecati totam inventore rerum hic itaque praesentium tenetur labore, in libero nihil sunt quidem ex iusto quos laboriosam? Ipsum nobis error officia? Dolorum tempora repudiandae, officia illum rem excepturi delectus sapiente voluptatem earum repellendus ullam. Ullam blanditiis voluptates et, ipsa quisquam suscipit officiis quia necessitatibus velit sit aliquid ab amet aliquam nisi temporibus in facilis natus totam dolores! Officia, eos voluptatum!
       </Wrapper>
     </StyledAside>
   );
@@ -33,7 +41,6 @@ const StyledAside = styled.aside`
   transform: translateX(${(props) => (props.open ? "0" : "-100%")});
   border-right: 1px solid rgb(var(--gray));
   transition: var(--transition-d) var(--transition-tf);
-  padding: 2rem 1rem;
 
   & > button {
     position: absolute;
@@ -46,18 +53,22 @@ const H1 = styled.h1`
   font-size: var(--fz-lg);
   text-align: center;
   margin-block-end: 1rem;
+  font-weight: bold;
+  padding-inline: 1rem;
 `;
 
 const P = styled.p`
   text-align: center;
   border-bottom: 1px solid rgb(var(--gray));
-  padding-block-end: 1.5rem;
+  padding-block-end: 2rem;
+  padding-inline: 1rem;
 `;
 
 const Wrapper = styled.div`
+  padding-block: 2rem;
   top: 0;
   position: sticky;
-  height: 100vh;
+  max-height: 100vh;
   overflow-y: auto;
   background-color: ;
 `;

@@ -53,7 +53,7 @@ const MoonIcon = () => (
 );
 
 const Hdr = styled.header`
-  padding: 1rem;
+  padding-block: 1rem 2rem;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -61,8 +61,8 @@ const Hdr = styled.header`
 
 const H1 = styled.h1`
   font-size: var(--fz-md);
-  margin-block-end: 1rem;
   margin-inline-end: auto;
+  font-weight: bold;
 `;
 
 export default Header;
