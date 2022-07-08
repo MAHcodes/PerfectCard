@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Main = ({ asideOpen }) => {
   return (
     <StyledMain asideOpen={asideOpen}>
-      <Header asideOpen={asideOpen}/>
+      <Header />
       <Preview />
       <Code />
     </StyledMain>

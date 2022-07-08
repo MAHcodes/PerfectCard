@@ -15,7 +15,7 @@ const Aside = ({ open, setOpen }) => {
     <StyledAside open={open}>
       <Button val={<ArrowIcon fill="rgba(var(--fg-main), 65%)" open={open} />} action={() => setOpen(!open)} />
       <Wrapper ref={wrapperRef} >
-        <H1>Perfect Card</H1>
+        <H1>PerfectCard</H1>
         <P>Easiest way to create your Perfect Card.</P>
         <Options />
       </Wrapper>
@@ -30,10 +30,11 @@ const StyledAside = styled.aside`
   transform: translateX(${(props) => (props.open ? "0" : "-100%")});
   border-right: 1px solid rgb(var(--gray));
   transition: var(--transition-d) var(--transition-tf);
+  margin-left: ${props => props.open ? "0" : "-10rem"};
 
   & > button {
     position: absolute;
-    inset: 1rem -1rem auto auto;
+    inset: 2rem ${props => props.open ? "-1rem" : "-11rem"} auto auto;
     transform: translateX(100%);
   }
 `;
@@ -59,7 +60,6 @@ const Wrapper = styled.div`
   position: sticky;
   max-height: 100vh;
   overflow-y: auto;
-  background-color: ;
 `;
 
 export default Aside;

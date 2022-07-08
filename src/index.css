@@ -15,6 +15,7 @@ body.dark {
   --bg-main: 17, 24, 39;
   --fg-main: 237, 242, 247;
   --gray: 75, 75, 75;
+  --accent: 77, 77, 255;
 }
 
 body.light {
@@ -22,6 +23,7 @@ body.light {
   --bg-main: 237, 242, 247;
   --fg-main: 49, 63, 78;
   --gray: 175, 175, 175;
+  --accent: 77, 77, 255;
 }
 
 @font-face {

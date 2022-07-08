@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 
-const Header = ({ asideOpen }) => {
+const Header = () => {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Header = ({ asideOpen }) => {
 
   return (
     <Hdr>
-      {asideOpen || <H1>Perfect Cart</H1>}
+      <H1>PerfectCart</H1>
       <Button border val={dark ? <SunIcon /> : <MoonIcon />} action={toggleTheme} />
     </Hdr>
   );

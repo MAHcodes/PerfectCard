@@ -13,10 +13,9 @@ const Preview = () => {
 const Box = styled.div`
   min-height: 20rem;
   height: 50vh;
-  background: red;
   border-radius: .4rem;
-  background: rgb(var(--bg-main));
   margin-bottom: 2rem;
+  display: flex;
 `
 
 const Card = styled.div`
@@ -25,6 +24,9 @@ const Card = styled.div`
   justify-content: center;
   background-color: rgb(var(--fg-main));
   color: rgb(var(--bg-main));
+  resize: both;
+  overflow: auto;
+  margin: auto;
 `
 
 export default Preview
