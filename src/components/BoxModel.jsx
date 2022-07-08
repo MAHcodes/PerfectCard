@@ -1,9 +1,21 @@
+import { useContext } from "react";
 import styled from "styled-components"
+import { CardCssContext } from "../hooks/CardCSS";
 
 const BoxModel = ({active}) => {
+  const {cardCss, setCardCss} = useContext(CardCssContext);
+
   return (
-    <Div active={active} >
-      BoxModel
+    <Div active={active}>
+      width: 
+      <input type="range" min="5" max="1000" value={cardCss.width} onChange={e => setCardCss( {...cardCss, width: e.target.value})} />
+      {cardCss.width}px
+
+      <br />
+
+      height: 
+      <input type="range" min="5" max="1000" value={cardCss.height} onChange={e => setCardCss( {...cardCss, height: e.target.value})} />
+      {cardCss.height}px
     </Div>
   )
 }

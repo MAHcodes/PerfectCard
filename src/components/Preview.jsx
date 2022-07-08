@@ -1,9 +1,13 @@
 import styled from "styled-components"
+import { useContext } from "react";
+import { CardCssContext } from "../hooks/CardCSS";
 
 const Preview = () => {
+  const {cardCss} = useContext(CardCssContext);
+
   return (
     <Box>
-      <Card>
+      <Card css={cardCss}>
         <h2>Preview</h2>
       </Card>
     </Box>
@@ -27,6 +31,8 @@ const Card = styled.div`
   resize: both;
   overflow: auto;
   margin: auto;
+  width: ${props => props.css.width}px;
+  height: ${props => props.css.height}px;
 `
 
 export default Preview

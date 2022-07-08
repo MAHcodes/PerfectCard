@@ -3,7 +3,12 @@ import { createContext, useState } from "react";
 export const CardCssContext = createContext(null);
 
 const CardCssContextProvider = (props) => {
-  const [cardCss, setCardCss] = useState({});
+  const defaultCss = {
+    width: 200,
+    height: 200,
+  }
+  
+  const [cardCss, setCardCss] = useState(defaultCss);
 
   return (<CardCssContext.Provider value={{cardCss, setCardCss}}>
     {props.children}
