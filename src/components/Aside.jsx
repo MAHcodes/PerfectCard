@@ -1,20 +1,28 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import ArrowIcon from "./ArrowIcon";
 import Options from "./Options";
 
 const Aside = ({ open, setOpen }) => {
-  const wrapperRef = useRef(undefined);
+  const [asideHeight, setAsideHeight] = useState(window.innerHeight);
+
+  const handleResize = () => {
+    setAsideHeight(window.innerHeight);
+  };
+
   useEffect(() => {
-    wrapperRef.current.style.height = `${window.innerHeight}px`;
-    // eslint-disable-next-line
-  }, [window.innerHeight]);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <StyledAside open={open}>
-      <Button val={<ArrowIcon fill="rgba(var(--fg-main), 65%)" open={open} />} action={() => setOpen(!open)} />
-      <Wrapper ref={wrapperRef} >
+      <Button
+        val={<ArrowIcon fill="rgba(var(--fg-main), 65%)" open={open} />}
+        action={() => setOpen(!open)}
+      />
+      <Wrapper height={asideHeight}>
         <H1>PerfectCard</H1>
         <P>Easiest way to create your Perfect Card.</P>
         <Options />
@@ -26,15 +34,15 @@ const Aside = ({ open, setOpen }) => {
 const StyledAside = styled.aside`
   background-color: rgb(var(--bg-main));
   position: relative;
-  flex: ${(props) => (props.open ? ".25" : "0")};
+  flex: ${(props) => (props.open ? ".3" : "0")};
+  width: ${(props) => (props.open ? "auto" : "0")};
   transform: translateX(${(props) => (props.open ? "0" : "-100%")});
   border-right: 1px solid rgb(var(--gray));
   transition: var(--transition-d) var(--transition-tf);
-  margin-left: ${props => props.open ? "0" : "-10rem"};
 
   & > button {
     position: absolute;
-    inset: 2rem ${props => props.open ? "-1rem" : "-11rem"} auto auto;
+    inset: 2rem -1rem auto auto;
     transform: translateX(100%);
   }
 `;
@@ -60,6 +68,7 @@ const Wrapper = styled.div`
   position: sticky;
   max-height: 100vh;
   overflow-y: auto;
+  height: ${(props) => props.height}px;
 `;
 
 export default Aside;

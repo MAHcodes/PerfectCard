@@ -47,6 +47,7 @@ body {
   background-image: radial-gradient(rgb(var(--gray)) .5px,rgb(var(--bg-sec)) 1px);
   background-size: 20px 20px;
   color: rgb(var(--fg-main));
+  overflow-x: hidden;
 }
 
 * {

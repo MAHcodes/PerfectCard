@@ -14,8 +14,9 @@ const Main = ({ asideOpen }) => {
 }
 
 const StyledMain = styled.main`
-  flex: ${props => props.asideOpen ? ".75" : "1"};
+  flex: ${props => props.asideOpen ? ".7" : "1"};
   padding: 1rem 5rem;
+  overflow: auto;
 `
 
 export default Main
