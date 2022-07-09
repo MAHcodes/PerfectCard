@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 const NumberInput = (props) => {
-  return <Number min={props.min} type="number" value={props.value} onChange={props.onChange} />;
+  return <Number min={props.min} type="number" value={Math.round(props.value)} onChange={props.onChange} />;
 };
 
 const Number = styled.input`
-  width: 7ch;
+  width: 8ch;
   background-color: rgba(var(--accent), 50%);
   border-radius: 0.25rem;
   padding: 0.25rem .5rem;
