@@ -53,3 +53,8 @@ body {
 * {
   transition: background-color var(--transition-d) var(--transition-tf);
 }
+
+*::selection {
+  color: rgb(var(--bg-main));
+  background-color: rgb(var(--accent));
+}
