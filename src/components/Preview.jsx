@@ -11,8 +11,8 @@ const Preview = () => {
   useEffect(() => {
     if (sizes.width && sizes.height) {
     const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const computedWidth = cardCss.widthUnit === "px" ? sizes.width : cardCss.widthUnit === "rem" ? Math.floor(sizes.width / rem) : Math.ceil((sizes.width / parentRef.current.clientWidth) * 100);
-    const computedHeight = cardCss.heightUnit === "px" ? sizes.height : cardCss.heightUnit === "rem" ? Math.floor(sizes.height / rem) : Math.ceil((sizes.height / parentRef.current.clientHeight) * 100);
+    const computedWidth = cardCss.widthUnit === "px" ? sizes.width : cardCss.widthUnit === "rem" ? (sizes.width / rem) : (sizes.width / parentRef.current.clientWidth) * 100;
+    const computedHeight = cardCss.heightUnit === "px" ? sizes.height : cardCss.heightUnit === "rem" ? (sizes.height / rem) : (sizes.height / parentRef.current.clientHeight) * 100;
       
       setCardCss({ ...cardCss, width: computedWidth, height: computedHeight });
     }
