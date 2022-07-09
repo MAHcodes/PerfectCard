@@ -1,21 +1,27 @@
 import styled from "styled-components";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { CardCssContext } from "../hooks/CardCSS";
 import useResizeAware from "react-resize-aware";
 
 const Preview = () => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
   const [resizeListener, sizes] = useResizeAware();
+  const parentRef = useRef(null);
 
   useEffect(() => {
     if (sizes.width && sizes.height) {
-      setCardCss({ ...cardCss, width: sizes.width, height: sizes.height });
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const computedWidth = cardCss.widthUnit === "px" ? sizes.width : cardCss.widthUnit === "rem" ? Math.floor(sizes.width / rem) : Math.ceil((sizes.width / parentRef.current.clientWidth) * 100);
+    const computedHeight = cardCss.heightUnit === "px" ? sizes.height : cardCss.heightUnit === "rem" ? Math.floor(sizes.height / rem) : Math.ceil((sizes.height / parentRef.current.clientHeight) * 100);
+      
+      setCardCss({ ...cardCss, width: computedWidth, height: computedHeight });
     }
+
     // eslint-disable-next-line
   }, [sizes]);
 
   return (
-    <Box>
+    <Box ref={parentRef}>
       <Card
         style={{
           width: `${cardCss.width}${cardCss.widthUnit}`,

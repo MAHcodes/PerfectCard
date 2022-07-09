@@ -5,7 +5,7 @@ const NumberInput = (props) => {
 };
 
 const Number = styled.input`
-  width: 8ch;
+  width: 7ch;
   background-color: rgba(var(--accent), 50%);
   border-radius: 0.25rem;
   padding: 0.25rem .5rem;

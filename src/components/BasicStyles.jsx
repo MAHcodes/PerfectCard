@@ -6,7 +6,7 @@ import NumberInput from "./NumberInput";
 import Property from "./Property";
 import SelectUnit from "./SelectUnit";
 
-const BoxModel = ({ active }) => {
+const BasicStyles = ({ active }) => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
 
   return (
@@ -100,4 +100,4 @@ const Div = styled.div`
   height: ${(props) => (props.active ? "auto" : "0")};
 `;
 
-export default BoxModel;
+export default BasicStyles;

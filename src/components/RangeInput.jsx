@@ -34,7 +34,7 @@ const Range = styled.input`
     margin-top: -4px; /* Centers thumb on the track */
     background-color: rgb(var(--fg-main));
     border-radius: 16rem;
-    height: .75rem;
+    height: 1rem;
     width: 1rem;
   }
 
@@ -56,7 +56,7 @@ const Range = styled.input`
     background-color: rgb(var(--fg-main));
     border: none; /*Removes extra border that FF applies*/
     border-radius: 16rem;
-    height: .75rem;
+    height: 1rem;
     width: 1rem;
   }
 

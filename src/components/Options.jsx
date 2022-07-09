@@ -1,5 +1,5 @@
 import Select from "./Select";
-import BoxModel from "./BoxModel";
+import BasicStyles from "./BasicStyles";
 import { useState } from "react";
 
 const Options = () => {
@@ -7,7 +7,7 @@ const Options = () => {
 
   return (
     <div>
-      <Select setOpen={setOpen} open={open} title="Box Model"><BoxModel active={open} /></Select>
+      <Select setOpen={setOpen} open={open} title="Basic Styles"><BasicStyles active={open} /></Select>
     </div>
   )
 }
