@@ -26,6 +26,7 @@ const Aside = ({ open, setOpen }) => {
         <H1>PerfectCard</H1>
         <P>Easiest way to create your Perfect Card.</P>
         <Options />
+        <Button val="Reset Parameters" pad=".5rem 1rem" />
       </Wrapper>
     </StyledAside>
   );

@@ -18,7 +18,7 @@ const Select = ({ title, open, children, setOpen }) => {
 
 const Div = styled.div`
   padding: 2rem 1rem;
-  color: rgba(var(--fg-main), 85%);
+  color: rgb(var(--fg-main));
 `;
 
 const Title = styled.div`
@@ -30,7 +30,7 @@ const Title = styled.div`
   cursor: pointer;
 
   &:hover p {
-    color: ${props => !props.active &&  "rgba(var(--accent), 85%)"};
+    color: rgba(var(--accent), 85%);
   }
 `;
 
@@ -46,7 +46,6 @@ const Text = styled.p`
   display: inline;
   font-size: var(--fz-base);
   transition: color var(--transition-d) var(--transition-tf);
-  color: ${props => props.active ? "rgb(var(--accent))" : "rgb(var(--fg-main), 85%)"};
 `;
 
 export default Select;
