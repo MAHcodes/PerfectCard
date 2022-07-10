@@ -13,7 +13,7 @@ const Code = () => {
       <CodeHeader codeRef={codeRef} />
       <Pre>
         <code ref={codeRef} >
-          .card {"{"} <br />
+          .card {"{"}
           <Comment>{"/* Basic Styles */"}</Comment>
           {cardCss.width && (
             <CSSPropVal

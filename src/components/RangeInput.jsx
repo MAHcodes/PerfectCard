@@ -26,6 +26,9 @@ const Range = styled.input`
     border-radius: 8rem;
     height: 0.25rem;
   }
+  &:hover::-webkit-slider-runnable-track {
+    background-color: rgb(var(--accent));
+  }
 
   /* slider thumb */
   &::-webkit-slider-thumb {
@@ -49,6 +52,9 @@ const Range = styled.input`
     background-color: rgba(var(--accent), 60%);
     border-radius: 8rem;
     height: 0.25rem;
+  }
+  &::-moz-range-track:hover {
+    background-color: rgb(var(--accent));
   }
 
   /* slider thumb */

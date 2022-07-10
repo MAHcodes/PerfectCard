@@ -1,4 +1,5 @@
 :root {
+  --white: 237, 242, 247;
   --transition-d: 250ms;
   --transition-tf: ease-in-out;
   --fz-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);

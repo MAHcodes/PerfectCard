@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const CodeHeader = ({ codeRef }) => {
   const handleCopy = () => {
-    navigator.clipboard.writeText(codeRef.current.textContent);
+    navigator.clipboard.writeText(codeRef.current.innerText);
   };
 
   return (

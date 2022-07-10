@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import ArrowIcon from "./ArrowIcon";
 import Options from "./Options";
+import { CardCssContext } from "../hooks/CardCSS";
 
 const Aside = ({ open, setOpen }) => {
   const [asideHeight, setAsideHeight] = useState(window.innerHeight);
+  const {setDefaults} = useContext(CardCssContext);
 
   const handleResize = () => {
     setAsideHeight(window.innerHeight);
@@ -26,7 +28,9 @@ const Aside = ({ open, setOpen }) => {
         <H1>PerfectCard</H1>
         <P>Easiest way to create your Perfect Card.</P>
         <Options />
-        <Button val="Reset Parameters" pad=".5rem 1rem" />
+        <BtnContainer>
+          <Button val="Reset Parameters" pad=".75em 1em" action={setDefaults} />
+        </BtnContainer>
       </Wrapper>
     </StyledAside>
   );
@@ -64,12 +68,25 @@ const P = styled.p`
 `;
 
 const Wrapper = styled.div`
-  padding-block: 2rem;
+  padding-block: 2rem 1rem;
   top: 0;
   position: sticky;
   max-height: 100vh;
   overflow-y: auto;
   height: ${(props) => props.height}px;
+  display: flex;
+  flex-direction: column;
 `;
+
+const BtnContainer = styled.div`
+  padding-inline: 2rem;
+  background-color: rgb(var(--bg-main));
+
+  & > button {
+    width: 100%;
+    color: rgb(var(--white));
+    font-size: var(--fz-sm);
+  }
+`
 
 export default Aside;
