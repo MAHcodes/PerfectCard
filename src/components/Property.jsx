@@ -17,6 +17,7 @@ const Div = styled.div`
 
   & > .hue-picker {
     flex: 1;
+    cursor: pointer;
     margin-block: 2rem;
 
     &

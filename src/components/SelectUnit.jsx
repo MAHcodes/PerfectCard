@@ -19,11 +19,12 @@ const StyledSelect = styled.select`
   padding: 0.25rem;
   color: rgb(var(--fg-main));
 
-  &:hover,
-  &:active {
+  &:focus {
     background-color: rgba(var(--accent), 75%);
   }
 
+  &:hover,
+  &:active,
   &:focus {
     outline: 1px solid rgb(var(--fg-main));
     outline-offset: 0.125rem;

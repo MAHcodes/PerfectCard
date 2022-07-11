@@ -1,18 +1,24 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { CardCssContext } from "../hooks/CardCSS";
 import RangeInput from "./RangeInput";
 import NumberInput from "./NumberInput";
 import Property from "./Property";
 import SelectUnit from "./SelectUnit";
-import { HuePicker } from 'react-color'
+import { HuePicker, SketchPicker } from "react-color";
 
 const BasicStyles = ({ active }) => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
 
-  const handleColorChange = ({ hex }) => {
-    console.log(hex)
-    setCardCss({...cardCss, backgroundColor: hex });
+  const handleColorChange = ({ hex, rgb, hsl }) => {
+    console.log(hex, rgb, hsl);
+    setCardCss({ ...cardCss, backgroundColor: hex });
+  };
+
+  const [displayColorPicker, setDisplayColorPicker] = useState(false);
+
+  const handleClick = () => {
+    setDisplayColorPicker(!displayColorPicker);
   };
 
   return (
@@ -91,7 +97,22 @@ const BasicStyles = ({ active }) => {
         />
       </Property>
       <Property title="Background">
-        <HuePicker height=".3rem" cursor="pointer" color={cardCss.backgroundColor} onChangeComplete={handleColorChange} />
+        <HuePicker
+          height=".3rem"
+          color={cardCss.backgroundColor}
+          onChangeComplete={handleColorChange}
+        />
+        <CustomColor>
+          <Swatch  onClick={handleClick} bg={cardCss.backgroundColor} />
+          {displayColorPicker ? (
+            <PopOver>
+              <SketchPicker
+                color={cardCss.backgroundColor}
+                onChangeComplete={handleColorChange}
+              />
+            </PopOver>
+          ) : undefined}
+        </CustomColor>
       </Property>
     </Div>
   );
@@ -107,6 +128,30 @@ const Div = styled.div`
   transition: padding var(--transition-d) var(--transition-tf);
   overflow: hidden;
   height: ${(props) => (props.active ? "auto" : "0")};
+`;
+
+const CustomColor = styled.div``;
+
+const Swatch = styled.div`
+  width: 6ch;
+  height: 1.4rem;
+  border-radius: 0.25rem;
+  background-color: ${(props) => props.bg};
+  padding: 5px;
+  display: inline-blcok;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    outline: 1px solid rgb(var(--fg-main));
+    outline-offset: 0.125rem;
+  }
+`;
+
+const PopOver = styled.div`
+  position: absolute;
+  right: 2rem;
+  margin-top: 1rem;
 `;
 
 export default BasicStyles;

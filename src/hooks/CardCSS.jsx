@@ -9,7 +9,7 @@ const CardCssContextProvider = (props) => {
     height: 200,
     widthUnit: "px",
     heightUnit: "px",
-    backgroundColor: "#FFFFF",
+    backgroundColor: "#FFFFFF",
   }
 
   const [cardCss, setCardCss] = useState(defaultCss);

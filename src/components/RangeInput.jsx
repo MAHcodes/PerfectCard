@@ -41,6 +41,8 @@ const Range = styled.input`
     width: 1rem;
   }
 
+  &:active::-webkit-slider-thumb,
+  &:hover::-webkit-slider-thumb,
   &:focus::-webkit-slider-thumb {
     outline: 1px solid rgb(var(--fg-main));
     outline-offset: 0.125rem;
@@ -66,6 +68,8 @@ const Range = styled.input`
     width: 1rem;
   }
 
+  &:active::-moz-range-thumb,
+  &:hover::-moz-range-thumb,
   &:focus::-moz-range-thumb {
     outline: 1px solid rgb(var(--fg-main));
     outline-offset: 0.125rem;
