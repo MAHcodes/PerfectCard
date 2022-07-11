@@ -13,7 +13,7 @@ const Preview = () => {
     const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
     const computedWidth = cardCss.widthUnit === "px" ? sizes.width : cardCss.widthUnit === "rem" ? (sizes.width / rem) : (sizes.width / parentRef.current.clientWidth) * 100;
     const computedHeight = cardCss.heightUnit === "px" ? sizes.height : cardCss.heightUnit === "rem" ? (sizes.height / rem) : (sizes.height / parentRef.current.clientHeight) * 100;
-      
+
       setCardCss({ ...cardCss, width: computedWidth, height: computedHeight });
     }
 
@@ -49,12 +49,13 @@ const Card = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(var(--fg-main));
-  color: rgb(var(--bg-main));
   resize: both;
   overflow: auto;
   margin: auto;
   position: relative;
+
+  background-color: rgb(var(--white));
+  color: rgb(var(--black));
 `;
 
 export default Preview;

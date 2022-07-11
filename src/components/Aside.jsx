@@ -84,7 +84,6 @@ const BtnContainer = styled.div`
 
   & > button {
     width: 100%;
-    color: rgb(var(--white));
     font-size: var(--fz-sm);
   }
 `
