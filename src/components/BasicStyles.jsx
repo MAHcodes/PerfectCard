@@ -11,7 +11,6 @@ const BasicStyles = ({ active }) => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
 
   const handleColorChange = ({ hex, rgb, hsl }) => {
-    console.log(hsl);
     const bg =
       cardCss.bgUnit === "rgb"
         ? `rgba(${rgb.r} ${rgb.b} ${rgb.b} / ${rgb.a})`
@@ -113,7 +112,7 @@ const BasicStyles = ({ active }) => {
           onChangeComplete={handleColorChange}
         />
         <div>
-          <Swatch onClick={handleClick} bg={cardCss.bgColor} />
+          <Swatch active={displayColorPicker} onClick={handleClick} bg={cardCss.bgColor} />
           {displayColorPicker ? (
             <PopOver>
               <SketchPicker
@@ -154,11 +153,13 @@ const Swatch = styled.div`
   padding: 5px;
   display: inline-blcok;
   cursor: pointer;
+  border: 1px solid rgba(var(--accent), 85%);
+  outline-offset: 0.125rem;
+  outline: ${props => props.active && "1px solid rgb(var(--fg-main))"};
 
   &:hover,
   &:active {
     outline: 1px solid rgb(var(--fg-main));
-    outline-offset: 0.125rem;
   }
 `;
 
