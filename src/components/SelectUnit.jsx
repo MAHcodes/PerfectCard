@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const SelectUnit = ({onChange}) => {
+const SelectUnit = ({onChange, options}) => {
   return (
     <Wrapper>
-      <StyledSelect defaultValue="px" onChange={onChange} >
-        <option value="px">px</option>
-        <option value="rem">rem</option>
-        <option value="%">%</option>
+      <StyledSelect defaultValue={options[0]} onChange={onChange} >
+        {options.map(option => (
+          <option value={option}>{option}</option>
+        ))}
       </StyledSelect>
     </Wrapper>
   );

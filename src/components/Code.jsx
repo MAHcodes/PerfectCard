@@ -27,10 +27,10 @@ const Code = () => {
               val={`${Math.round(cardCss.height)}${cardCss.heightUnit}`}
             />
           )}
-          {cardCss.backgroundColor && (
+          {cardCss.bgColor && (
             <CSSPropVal
               prop="background-color"
-              val={cardCss.backgroundColor}
+              val={cardCss.bgColor}
             />
           )}
           {"}"}

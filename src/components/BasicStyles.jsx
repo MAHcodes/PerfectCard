@@ -11,8 +11,16 @@ const BasicStyles = ({ active }) => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
 
   const handleColorChange = ({ hex, rgb, hsl }) => {
-    console.log(hex, rgb, hsl);
-    setCardCss({ ...cardCss, backgroundColor: hex });
+    console.log(hsl);
+    const bg =
+      cardCss.bgUnit === "rgb"
+        ? `rgba(${rgb.r} ${rgb.b} ${rgb.b} / ${rgb.a})`
+        : cardCss.bgUnit === "hsl"
+        ? `hsla(${Math.round(hsl.h)} ${Math.round(hsl.s * 100)}% ${Math.round(
+            hsl.l * 100
+          )}% / ${hsl.a} )`
+        : hex;
+    setCardCss({ ...cardCss, bgColor: bg });
   };
 
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
@@ -54,6 +62,7 @@ const BasicStyles = ({ active }) => {
           onChange={(e) => setCardCss({ ...cardCss, width: e.target.value })}
         />
         <SelectUnit
+          options={["px", "rem", "%"]}
           onChange={(e) =>
             setCardCss({ ...cardCss, widthUnit: e.target.value })
           }
@@ -91,28 +100,35 @@ const BasicStyles = ({ active }) => {
           onChange={(e) => setCardCss({ ...cardCss, height: e.target.value })}
         />
         <SelectUnit
+          options={["px", "rem", "%"]}
           onChange={(e) =>
             setCardCss({ ...cardCss, heightUnit: e.target.value })
           }
         />
       </Property>
-      <Property title="Background">
+      <Property title="Color">
         <HuePicker
           height=".3rem"
-          color={cardCss.backgroundColor}
+          color={cardCss.bgColor}
           onChangeComplete={handleColorChange}
         />
-        <CustomColor>
-          <Swatch  onClick={handleClick} bg={cardCss.backgroundColor} />
+        <div>
+          <Swatch onClick={handleClick} bg={cardCss.bgColor} />
           {displayColorPicker ? (
             <PopOver>
               <SketchPicker
-                color={cardCss.backgroundColor}
+                color={cardCss.bgColor}
                 onChangeComplete={handleColorChange}
               />
             </PopOver>
           ) : undefined}
-        </CustomColor>
+        </div>
+        <SelectUnit
+          options={["hex", "rgb", "hsl"]}
+          onChange={(e) => {
+            setCardCss({ ...cardCss, bgUnit: e.target.value });
+          }}
+        />
       </Property>
     </Div>
   );
@@ -130,11 +146,9 @@ const Div = styled.div`
   height: ${(props) => (props.active ? "auto" : "0")};
 `;
 
-const CustomColor = styled.div``;
-
 const Swatch = styled.div`
-  width: 6ch;
-  height: 1.4rem;
+  width: 8ch;
+  height: 1.55rem;
   border-radius: 0.25rem;
   background-color: ${(props) => props.bg};
   padding: 5px;
@@ -152,6 +166,17 @@ const PopOver = styled.div`
   position: absolute;
   right: 2rem;
   margin-top: 1rem;
+
+  & > div {
+    box-shadow: 0 0 1.25rem -0.5rem rgba(var(--fg-main), 80%) !important;
+    background: rgb(var(--bg-sec)) !important;
+    & label {
+      color: rgb(var(--fg-main)) !important;
+    }
+  }
+  & > div > div {
+    background: rgb(var(--bg-sec)) !important;
+  }
 `;
 
 export default BasicStyles;
