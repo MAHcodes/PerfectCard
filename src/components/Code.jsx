@@ -27,6 +27,12 @@ const Code = () => {
               val={`${Math.round(cardCss.height)}${cardCss.heightUnit}`}
             />
           )}
+          {cardCss.backgroundColor && (
+            <CSSPropVal
+              prop="background-color"
+              val={cardCss.backgroundColor}
+            />
+          )}
           {"}"}
         </code>
       </Pre>

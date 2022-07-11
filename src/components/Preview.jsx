@@ -54,7 +54,7 @@ const Card = styled.div`
   margin: auto;
   position: relative;
 
-  background-color: rgb(var(--white));
+  background-color: ${props => props.css.backgroundColor || "rgb(var(--white))" } ;
   color: rgb(var(--black));
 `;
 

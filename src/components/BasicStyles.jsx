@@ -5,9 +5,15 @@ import RangeInput from "./RangeInput";
 import NumberInput from "./NumberInput";
 import Property from "./Property";
 import SelectUnit from "./SelectUnit";
+import { HuePicker } from 'react-color'
 
 const BasicStyles = ({ active }) => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
+
+  const handleColorChange = ({ hex }) => {
+    console.log(hex)
+    setCardCss({...cardCss, backgroundColor: hex });
+  };
 
   return (
     <Div active={active}>
@@ -83,6 +89,9 @@ const BasicStyles = ({ active }) => {
             setCardCss({ ...cardCss, heightUnit: e.target.value })
           }
         />
+      </Property>
+      <Property title="Background">
+        <HuePicker height=".3rem" cursor="pointer" color={cardCss.backgroundColor} onChangeComplete={handleColorChange} />
       </Property>
     </Div>
   );
