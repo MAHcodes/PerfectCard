@@ -1,54 +1,60 @@
 import Draggable from "react-draggable";
 import styled from "styled-components";
 
-const BorderRadiusControls = ({ cardCss, setCardCss}) => {
+const BorderRadiusControls = ({ cardCss, setCardCss }) => {
+  return (
+    <>
+      <Div
+        cardCss={cardCss}
+        setCardCss={setCardCss}
+        bounds={{ left: 0, top: 0, right: 100, bottom: 100 }}
+        className="topLeft"
+      />
+      <Div
+        cardCss={cardCss}
+        setCardCss={setCardCss}
+        bounds={{ right: 0, top: 0, left: -100, bottom: 100 }}
+        className="topRight"
+      />
+      <Div
+        cardCss={cardCss}
+        setCardCss={setCardCss}
+        bounds={{ right: 0, top: -100, left: -100, bottom: 0 }}
+        className="bottomRight"
+      />
+      <Div
+        cardCss={cardCss}
+        setCardCss={setCardCss}
+        bounds={{ right: 100, top: -100, left: 0, bottom: 0 }}
+        className="bottomLeft"
+      />
+    </>
+  );
+};
 
-  const trackTopLeft = (data) => {
-    setCardCss({ ...cardCss, borderRadius: { ...cardCss.borderRadius, topLeft: { x: data.x, y: data.y } } } );
-  };
-
-  const trackTopRight = (data) => {
-    setCardCss({ ...cardCss, borderRadius: { ...cardCss.borderRadius, topRight: { x: data.x, y: data.y } } });
-  };
-
-  const trackBottomRight = (data) => {
-    setCardCss({ ...cardCss, borderRadius: { ...cardCss.borderRadius, bottomRight: { x: data.x, y: data.y } } });
-  };
-
-  const trackBottomLeft = (data) => {
-    setCardCss({ ...cardCss, borderRadius: { ...cardCss.borderRadius, bottomLeft: { x: data.x, y: data.y } } });
+const Div = ({ bounds, className, cardCss, setCardCss }) => {
+  const track = (data) => {
+    setCardCss({
+      ...cardCss,
+      borderRadius: {
+        ...cardCss.borderRadius,
+        [className]: { x: data.x, y: data.y },
+      },
+    });
+    console.log(className);
   };
 
   return (
-    <>
-      <Draggable
-        onDrag={(_, data) => trackTopLeft(data)}
-        bounds={{ left: 0, top: 0, right: 100, bottom: 100 }}
-      >
-        <BorderRadius className="topLeft" positionx={cardCss.borderRadius.topLeft.x || 0} />
-      </Draggable>
-
-      <Draggable
-        onDrag={(_, data) => trackTopRight(data)}
-        bounds={{ right: 0, top: 0, left: -100, bottom: 100 }}
-      >
-        <BorderRadius className="topRight" />
-      </Draggable>
-
-      <Draggable
-        onDrag={(_, data) => trackBottomRight(data)}
-        bounds={{ right: 0, top: -100, left: -100, bottom: 0 }}
-      >
-        <BorderRadius className="bottomRight" />
-      </Draggable>
-
-      <Draggable
-        onDrag={(_, data) => trackBottomLeft(data)}
-        bounds={{ right: 100, top: -100, left: 0, bottom: 0 }}
-      >
-        <BorderRadius className="bottomLeft" />
-      </Draggable>
-    </>
+    <Draggable
+      onDrag={(_, data) => track(data)}
+      bounds={bounds}
+      position={{
+        x: cardCss.borderRadius[className].x,
+        y: cardCss.borderRadius[className].y,
+      }}
+    >
+      <BorderRadius className={className} />
+    </Draggable>
   );
 };
 
