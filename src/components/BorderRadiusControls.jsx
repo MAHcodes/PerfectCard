@@ -67,7 +67,7 @@ const BorderRadius = styled.div`
   }
   &:hover,
   &:active {
-    outline: 1px solid rgb(var(--bg-main));
+    outline: 1px solid rgb(var(--black));
   }
 
   &.topLeft {

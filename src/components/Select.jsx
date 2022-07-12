@@ -11,13 +11,13 @@ const Select = ({ title, open, children, setOpen }) => {
         </Icon>
         <Text active={active}>{title}</Text>
       </Title>
-      <div>{children}</div>
+      <Options active={active}>{children}</Options>
     </Div>
   );
 };
 
 const Div = styled.div`
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 0;
   color: rgb(var(--fg-main));
 `;
 
@@ -46,6 +46,21 @@ const Text = styled.p`
   display: inline;
   font-size: var(--fz-base);
   transition: color var(--transition-d) var(--transition-tf);
+`;
+
+const Options = styled.div`
+  padding: ${(props) => (props.active ? "1rem" : "0")} 1rem;
+  margin-inline-start: 0.65rem;
+  margin-block-start: 0.65rem;
+  border-inline-start: 1px solid
+    ${(props) =>
+      props.active ? "rgba(var(--accent), 50%)" : "rgb(var(--fg-main))"};
+  transition: transform var(--transition-d) var(--transition-tf),
+    padding var(--transition-d) var(--transition-tf);
+  transform-origin: center top;
+  overflow: hidden;
+  height: ${(props) => (props.active ? "auto" : "0")};
+  transform: ${(props) => (props.active ? "0" : "rotateX(90deg)")};
 `;
 
 export default Select;

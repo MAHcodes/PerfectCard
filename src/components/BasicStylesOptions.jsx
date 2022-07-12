@@ -29,7 +29,7 @@ const BasicStyles = ({ active }) => {
   };
 
   return (
-    <Div active={active}>
+    <>
       <Property title="Width">
         <RangeInput
           min={
@@ -105,6 +105,7 @@ const BasicStyles = ({ active }) => {
           }
         />
       </Property>
+      <br />
       <Property title="Color">
         <HuePicker
           height=".3rem"
@@ -112,7 +113,11 @@ const BasicStyles = ({ active }) => {
           onChangeComplete={handleColorChange}
         />
         <div>
-          <Swatch active={displayColorPicker} onClick={handleClick} bg={cardCss.bgColor} />
+          <Swatch
+            active={displayColorPicker}
+            onClick={handleClick}
+            bg={cardCss.bgColor}
+          />
           {displayColorPicker ? (
             <PopOver>
               <SketchPicker
@@ -129,21 +134,9 @@ const BasicStyles = ({ active }) => {
           }}
         />
       </Property>
-    </Div>
+    </>
   );
 };
-
-const Div = styled.div`
-  padding: ${(props) => (props.active ? "1rem" : "0")} 1rem;
-  margin-inline-start: 0.65rem;
-  margin-block-start: 0.65rem;
-  border-inline-start: 1px solid
-    ${(props) =>
-      props.active ? "rgba(var(--accent), 50%)" : "rgb(var(--fg-main))"};
-  transition: padding var(--transition-d) var(--transition-tf);
-  overflow: hidden;
-  height: ${(props) => (props.active ? "auto" : "0")};
-`;
 
 const Swatch = styled.div`
   width: 8ch;
@@ -155,7 +148,7 @@ const Swatch = styled.div`
   cursor: pointer;
   border: 1px solid rgba(var(--accent), 85%);
   outline-offset: 0.125rem;
-  outline: ${props => props.active && "1px solid rgb(var(--fg-main))"};
+  outline: ${(props) => props.active && "1px solid rgb(var(--fg-main))"};
 
   &:hover,
   &:active {
