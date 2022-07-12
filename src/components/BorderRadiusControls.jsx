@@ -41,7 +41,6 @@ const Div = ({ bounds, className, cardCss, setCardCss }) => {
         [className]: { x: data.x, y: data.y },
       },
     });
-    console.log(className);
   };
 
   return (

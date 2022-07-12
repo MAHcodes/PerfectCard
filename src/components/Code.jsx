@@ -7,6 +7,7 @@ import CodeHeader from "./CodeHeader";
 const Code = () => {
   const { cardCss } = useContext(CardCssContext);
   const codeRef = useRef(null);
+
   const ifBorderRadius = () => {
     const br = cardCss.borderRadius;
     return (
@@ -20,6 +21,14 @@ const Code = () => {
       br.bottomLeft.y
     );
   };
+
+  const borderRadiusCSSValue = `${cardCss.borderRadius.topLeft.y}% ${
+    cardCss.borderRadius.topRight.y
+  }% ${-cardCss.borderRadius.bottomRight.y}% ${-cardCss.borderRadius.bottomLeft
+    .y}% / ${cardCss.borderRadius.topLeft.x}% ${-cardCss.borderRadius.topRight
+    .x}% ${-cardCss.borderRadius.bottomRight.x}% ${
+    cardCss.borderRadius.bottomLeft.x
+  }%`;
 
   return (
     <Div>
@@ -42,15 +51,14 @@ const Code = () => {
               <br />
               <Comment>{"/* Border Radius */"}</Comment>
               <CSSPropVal
-                prop="border-radius"
-                val={`${cardCss.borderRadius.topLeft.y}% ${
-                  cardCss.borderRadius.topRight.y
-                }% ${-cardCss.borderRadius.bottomRight.y}% ${-cardCss
-                  .borderRadius.bottomLeft.y}% / ${
-                  cardCss.borderRadius.topLeft.x
-                }% ${-cardCss.borderRadius.topRight.x}% ${-cardCss.borderRadius
-                  .bottomRight.x}% ${cardCss.borderRadius.bottomLeft.x}%`}
+                prop="-webkit-border-radius"
+                val={borderRadiusCSSValue}
               />
+              <CSSPropVal
+                prop="-moz-border-radius"
+                val={borderRadiusCSSValue}
+              />
+              <CSSPropVal prop="border-radius" val={borderRadiusCSSValue} />
             </>
           ) : undefined}
           {"}"}

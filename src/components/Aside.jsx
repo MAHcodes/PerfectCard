@@ -5,9 +5,9 @@ import ArrowIcon from "./ArrowIcon";
 import Options from "./Options";
 import { CardCssContext } from "../hooks/CardCSS";
 
-const Aside = ({ open, setOpen }) => {
+const Aside = () => {
   const [asideHeight, setAsideHeight] = useState(window.innerHeight);
-  const {setDefaults} = useContext(CardCssContext);
+  const {setDefaults, asideOpen, setAsideOpen} = useContext(CardCssContext);
 
   const handleResize = () => {
     setAsideHeight(window.innerHeight);
@@ -19,10 +19,10 @@ const Aside = ({ open, setOpen }) => {
   }, []);
 
   return (
-    <StyledAside open={open}>
+    <StyledAside open={asideOpen}>
       <Button
-        val={<ArrowIcon fill="rgba(var(--fg-main), 65%)" open={open} />}
-        action={() => setOpen(!open)}
+        val={<ArrowIcon fill="rgba(var(--fg-main), 65%)" open={asideOpen} />}
+        action={() => setAsideOpen(!asideOpen)}
       />
       <Wrapper height={asideHeight}>
         <H1>PerfectCard</H1>

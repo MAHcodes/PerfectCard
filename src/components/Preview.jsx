@@ -5,7 +5,7 @@ import useResizeAware from "react-resize-aware";
 import BorderRadiusControls from "./BorderRadiusControls";
 
 const Preview = () => {
-  const { cardCss, setCardCss } = useContext(CardCssContext);
+  const { cardCss, setCardCss, optionOpen } = useContext(CardCssContext);
   const [resizeListener, sizes] = useResizeAware();
   const parentRef = useRef(null);
 
@@ -41,11 +41,12 @@ const Preview = () => {
           height: `${cardCss.height}${cardCss.heightUnit}`,
         }}
         css={cardCss}
+        basicOptionOpen = {optionOpen === "Basic Styles"}
       >
         <h2>Preview</h2>
         {resizeListener}
 
-        <BorderRadiusControls cardCss={cardCss} setCardCss={setCardCss} />
+        { optionOpen === "Border Radius" ? <BorderRadiusControls cardCss={cardCss} setCardCss={setCardCss} /> : undefined }
       </Card>
     </Box>
   );
@@ -68,7 +69,7 @@ const Card = styled.div`
   overflow: auto;
   margin: auto;
   position: relative;
-  /* overflow: visible; */
+  overflow: ${props => props.basicOptionOpen ? "scroll" : "visible"};
   border-radius: ${(props) =>
     `${props.css.borderRadius.topLeft.y}% ${
       props.css.borderRadius.topRight.y
