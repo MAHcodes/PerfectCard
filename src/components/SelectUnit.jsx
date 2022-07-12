@@ -5,7 +5,7 @@ const SelectUnit = ({onChange, options}) => {
     <Wrapper>
       <StyledSelect defaultValue={options[0]} onChange={onChange} >
         {options.map(option => (
-          <option value={option}>{option}</option>
+          <option key={option} value={option}>{option}</option>
         ))}
       </StyledSelect>
     </Wrapper>
