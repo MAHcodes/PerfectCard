@@ -41,17 +41,25 @@ const Preview = () => {
           height: `${cardCss.height}${cardCss.heightUnit}`,
           borderRadius: cardCss.allBorderRadius
             ? `${cardCss.allBorderRadius}${cardCss.allBorderRadiusUnit}`
-            : `${cardCss.borderRadius.topLeft.y}% ${
-                cardCss.borderRadius.topRight.y
-              }% ${-cardCss.borderRadius.bottomRight.y}% ${-cardCss
-                .borderRadius.bottomLeft.y}% / ${
-                cardCss.borderRadius.topLeft.x
-              }% ${-cardCss.borderRadius.topRight.x}% ${-cardCss
-                .borderRadius.bottomRight.x}% ${
-                cardCss.borderRadius.bottomLeft.x
-              }%`,
+            : `${cardCss.borderRadius.topLeft.y.value}${
+                cardCss.borderRadius.topLeft.y.unit
+              } ${cardCss.borderRadius.topRight.y.value}${
+                cardCss.borderRadius.topRight.y.unit
+              } ${-cardCss.borderRadius.bottomRight.y.value}${
+                cardCss.borderRadius.bottomRight.y.unit
+              } ${-cardCss.borderRadius.bottomLeft.y.value}${
+                cardCss.borderRadius.bottomLeft.y.unit
+              } / ${cardCss.borderRadius.topLeft.x.value}${
+                cardCss.borderRadius.topLeft.x.unit
+              } ${-cardCss.borderRadius.topRight.x.value}${
+                cardCss.borderRadius.topRight.x.unit
+              } ${-cardCss.borderRadius.bottomRight.x.value}${
+                cardCss.borderRadius.bottomRight.x.unit
+              } ${cardCss.borderRadius.bottomLeft.x.value}${
+                cardCss.borderRadius.bottomLeft.x.unit
+              }`,
           backgroundColor: cardCss.bgColor || "rgb(var(--white))",
-          overflow: optionOpen === "Basic Styles" ? "scroll" : "visible"
+          overflow: optionOpen === "Basic Styles" ? "scroll" : "visible",
         }}
       >
         <h2>Preview</h2>

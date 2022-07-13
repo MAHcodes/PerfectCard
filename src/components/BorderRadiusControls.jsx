@@ -39,7 +39,16 @@ const Div = ({ bounds, className, cardCss, setCardCss }) => {
       allBorderRadius: 0,
       borderRadius: {
         ...cardCss.borderRadius,
-        [className]: { x: data.x, y: data.y },
+        [className]: {
+          x: {
+            ...cardCss.borderRadius[className].x,
+            value: data.x,
+          },
+          y: {
+            ...cardCss.borderRadius[className].y,
+            value: data.y,
+          },
+        },
       },
     });
   };
@@ -49,8 +58,8 @@ const Div = ({ bounds, className, cardCss, setCardCss }) => {
       onDrag={(_, data) => track(data)}
       bounds={bounds}
       position={{
-        x: cardCss.borderRadius[className].x,
-        y: cardCss.borderRadius[className].y,
+        x: cardCss.borderRadius[className].x.value,
+        y: cardCss.borderRadius[className].y.value,
       }}
     >
       <BorderRadius className={className} />

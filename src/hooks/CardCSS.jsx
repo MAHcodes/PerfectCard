@@ -14,10 +14,10 @@ const CardCssContextProvider = (props) => {
     bgColor: "#FFFFFF",
     bgUnit: "hex",
     borderRadius: {
-      topLeft: { x: 0, y: 0 },
-      topRight: { x: 0, y: 0 },
-      bottomRight: { x: 0, y: 0 },
-      bottomLeft: { x: 0, y: 0 },
+      topLeft: { x: { unit: "%", value: 0 }, y: { unit: "%", value: 0 } },
+      topRight: { x: { unit: "%", value: 0 }, y: { unit: "%", value: 0 } },
+      bottomRight: { x: { unit: "%", value: 0 }, y: { unit: "%", value: 0 } },
+      bottomLeft: { x: { unit: "%", value: 0 }, y: { unit: "%", value: 0 } },
     },
     allBorderRadius: 0,
     allBorderRadiusUnit: "px",
@@ -28,7 +28,17 @@ const CardCssContextProvider = (props) => {
   const setDefaults = () => setCardCss(defaultCss);
 
   return (
-    <CardCssContext.Provider value={{ cardCss, setCardCss, setDefaults, asideOpen, setAsideOpen, optionOpen, setOptionOpen }}>
+    <CardCssContext.Provider
+      value={{
+        cardCss,
+        setCardCss,
+        setDefaults,
+        asideOpen,
+        setAsideOpen,
+        optionOpen,
+        setOptionOpen,
+      }}
+    >
       {props.children}
     </CardCssContext.Provider>
   );
