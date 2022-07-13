@@ -63,7 +63,8 @@ const BorderRadius = styled.div`
   width: 1.25rem;
   height: 1.25rem;
   background-color: rgb(var(--white));
-  border: 1px solid rgb(var(--black));
+  border: 1px solid rgb(var(--white));
+  mix-blend-mode: difference;
   cursor: grab;
   outline-offset: 0.125rem;
   z-index: 4;

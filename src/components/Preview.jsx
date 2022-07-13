@@ -39,14 +39,27 @@ const Preview = () => {
         style={{
           width: `${cardCss.width}${cardCss.widthUnit}`,
           height: `${cardCss.height}${cardCss.heightUnit}`,
+          borderRadius: cardCss.allBorderRadius
+            ? `${cardCss.allBorderRadius}${cardCss.allBorderRadiusUnit}`
+            : `${cardCss.borderRadius.topLeft.y}% ${
+                cardCss.borderRadius.topRight.y
+              }% ${-cardCss.borderRadius.bottomRight.y}% ${-cardCss
+                .borderRadius.bottomLeft.y}% / ${
+                cardCss.borderRadius.topLeft.x
+              }% ${-cardCss.borderRadius.topRight.x}% ${-cardCss
+                .borderRadius.bottomRight.x}% ${
+                cardCss.borderRadius.bottomLeft.x
+              }%`,
+          backgroundColor: cardCss.bgColor || "rgb(var(--white))",
+          overflow: optionOpen === "Basic Styles" ? "scroll" : "visible"
         }}
-        css={cardCss}
-        basicOptionOpen = {optionOpen === "Basic Styles"}
       >
         <h2>Preview</h2>
         {resizeListener}
 
-        { optionOpen === "Border Radius" ? <BorderRadiusControls cardCss={cardCss} setCardCss={setCardCss} /> : undefined }
+        {optionOpen === "Border Radius" ? (
+          <BorderRadiusControls cardCss={cardCss} setCardCss={setCardCss} />
+        ) : undefined}
       </Card>
     </Box>
   );
@@ -69,18 +82,7 @@ const Card = styled.div`
   overflow: auto;
   margin: auto;
   position: relative;
-  overflow: ${props => props.basicOptionOpen ? "scroll" : "visible"};
-  border-radius: ${(props) => (
-    props.css.allBorderRadius ? `${props.css.allBorderRadius}${props.css.allBorderRadiusUnit}` : `${props.css.borderRadius.topLeft.y}% ${
-      props.css.borderRadius.topRight.y
-    }% ${-props.css.borderRadius.bottomRight.y}% ${-props.css.borderRadius
-      .bottomLeft.y}% / ${props.css.borderRadius.topLeft.x}% ${-props.css
-      .borderRadius.topRight.x}% ${-props.css.borderRadius.bottomRight.x}% ${
-      props.css.borderRadius.bottomLeft.x
-    }%`
- )}};
 
-  background-color: ${(props) => props.css.bgColor || "rgb(var(--white))"};
   color: rgb(var(--white));
   & > h2 {
     mix-blend-mode: difference;
