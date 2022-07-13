@@ -46,19 +46,19 @@ const Code = () => {
             val={`${Math.round(cardCss.height)}${cardCss.heightUnit}`}
           />
           <CSSPropVal prop="background-color" val={cardCss.bgColor} />
-          {ifBorderRadius() ? (
+          {ifBorderRadius() || cardCss.allBorderRadius ? (
             <>
               <br />
               <Comment>{"/* Border Radius */"}</Comment>
+
               <CSSPropVal
-                prop="-webkit-border-radius"
-                val={borderRadiusCSSValue}
+                prop="border-radius"
+                val={
+                  cardCss.allBorderRadius
+                    ? `${cardCss.allBorderRadius}${cardCss.allBorderRadiusUnit}`
+                    : borderRadiusCSSValue
+                }
               />
-              <CSSPropVal
-                prop="-moz-border-radius"
-                val={borderRadiusCSSValue}
-              />
-              <CSSPropVal prop="border-radius" val={borderRadiusCSSValue} />
             </>
           ) : undefined}
           {"}"}

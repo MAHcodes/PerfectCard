@@ -39,7 +39,7 @@ const Aside = () => {
 const StyledAside = styled.aside`
   background-color: rgb(var(--bg-main));
   position: relative;
-  flex: ${(props) => (props.open ? ".3" : "0")};
+  flex: ${(props) => (props.open ? ".35" : "0")};
   width: ${(props) => (props.open ? "auto" : "0")};
   transform: translateX(${(props) => (props.open ? "0" : "-100%")});
   border-right: 1px solid rgb(var(--gray));

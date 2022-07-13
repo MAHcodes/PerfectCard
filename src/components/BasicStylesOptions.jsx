@@ -7,7 +7,7 @@ import Property from "./Property";
 import SelectUnit from "./SelectUnit";
 import { HuePicker, SketchPicker } from "react-color";
 
-const BasicStyles = ({ active }) => {
+const BasicStyles = () => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
 
   const handleColorChange = ({ hex, rgb, hsl }) => {

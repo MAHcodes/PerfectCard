@@ -70,14 +70,15 @@ const Card = styled.div`
   margin: auto;
   position: relative;
   overflow: ${props => props.basicOptionOpen ? "scroll" : "visible"};
-  border-radius: ${(props) =>
-    `${props.css.borderRadius.topLeft.y}% ${
+  border-radius: ${(props) => (
+    props.css.allBorderRadius ? `${props.css.allBorderRadius}${props.css.allBorderRadiusUnit}` : `${props.css.borderRadius.topLeft.y}% ${
       props.css.borderRadius.topRight.y
     }% ${-props.css.borderRadius.bottomRight.y}% ${-props.css.borderRadius
       .bottomLeft.y}% / ${props.css.borderRadius.topLeft.x}% ${-props.css
       .borderRadius.topRight.x}% ${-props.css.borderRadius.bottomRight.x}% ${
       props.css.borderRadius.bottomLeft.x
-    }%`};
+    }%`
+ )}};
 
   background-color: ${(props) => props.css.bgColor || "rgb(var(--white))"};
   color: rgb(var(--white));

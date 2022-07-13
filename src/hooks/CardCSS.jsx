@@ -19,6 +19,8 @@ const CardCssContextProvider = (props) => {
       bottomRight: { x: 0, y: 0 },
       bottomLeft: { x: 0, y: 0 },
     },
+    allBorderRadius: 0,
+    allBorderRadiusUnit: "px",
   };
 
   const [cardCss, setCardCss] = useState(defaultCss);

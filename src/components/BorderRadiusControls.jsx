@@ -36,6 +36,7 @@ const Div = ({ bounds, className, cardCss, setCardCss }) => {
   const track = (data) => {
     setCardCss({
       ...cardCss,
+      allBorderRadius: 0,
       borderRadius: {
         ...cardCss.borderRadius,
         [className]: { x: data.x, y: data.y },
