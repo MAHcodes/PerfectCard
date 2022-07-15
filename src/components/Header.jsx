@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Button from "./Button";
 import SelectUnit from "./SelectUnit";
 const BACKGROUNDS = {
+  "No Background": {
+    img: "",
+  },
   Dots: {
     img: "radial-gradient(rgb(var(--gray)) 1px,rgb(var(--bg-sec)) 1px)",
     size: "20px 20px",
@@ -20,7 +23,7 @@ const BACKGROUNDS = {
     bg: "radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 0% 0% / 40px 40px, radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 20px 20px / 40px 40px, linear-gradient(rgba(var(--gray), 50%) 1px, transparent 1px) 0px -0.5px / 20px 20px, linear-gradient(90deg, rgba(var(--gray), 50%) 1px, rgb(var(--bg-sec)) 1px) -0.5px 0px / 20px 20px rgb(var(--bg-sec))",
     position: "0 0, 10px 10px",
     size: "20px 20px",
-  }
+  },
 };
 
 const Header = () => {
@@ -41,9 +44,9 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const theme = JSON.parse(localStorage.getItem("dark") || false);
+    const theme = JSON.parse(localStorage.getItem("dark"))|| false;
     setDark(theme);
-    const bg = JSON.parse(localStorage.getItem("bg") || "Dots");
+    const bg = JSON.parse(localStorage.getItem("bg")) || "Dots";
     setBg(bg);
   }, []);
 
@@ -56,7 +59,7 @@ const Header = () => {
     <Hdr>
       <H1>PerfectCart</H1>
       <SelectUnit
-        options={["Dots", "Cross Dots", "Grid", "Crosses"]}
+        options={["No Background", "Dots", "Cross Dots", "Grid", "Crosses"]}
         onChange={handleBackground}
         def={bg}
       />
@@ -102,8 +105,9 @@ const Hdr = styled.header`
   gap: 1rem;
 
   & > span > select {
-    width: 12ch;
+    width: auto;
     padding-block: 0.35rem;
+    padding-inline-end: 1.35rem;
     background-color: transparent;
     &:focus,
     &:active {
