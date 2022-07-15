@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef } from "react";
 import { CardCssContext } from "../hooks/CardCSS";
 import useResizeAware from "react-resize-aware";
 import BorderRadiusControls from "./BorderRadiusControls";
+import BoxShadowControls from "./BoxShadowControls";
 
 const Preview = () => {
   const { cardCss, setCardCss, optionOpen } = useContext(CardCssContext);
@@ -68,6 +69,11 @@ const Preview = () => {
         {optionOpen === "Border Radius" ? (
           <BorderRadiusControls cardCss={cardCss} setCardCss={setCardCss} />
         ) : undefined}
+
+        { optionOpen === "Box Shadow" ? (
+          <BoxShadowControls cardCss={cardCss} setCardCss={setCardCss} />
+        ) : undefined }
+
       </Card>
     </Box>
   );

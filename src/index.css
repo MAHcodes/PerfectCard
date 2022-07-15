@@ -46,20 +46,6 @@ html {
 
 body {
   background-color: rgb(var(--bg-sec));
-  /* Dot */
-  background-image: radial-gradient(rgb(var(--gray)) 1px,rgb(var(--bg-sec)) 1px);
-  background-size: 20px 20px;
-
-  /* Cross Dots */
-  /* background-image: radial-gradient(rgb(var(--gray)) 1px, transparent 1px), radial-gradient(rgb(var(--gray)) 1px, transparent 1px); */
-  background-position: 0 0, 10px 10px;
-
-  /* Grid */
-  /* background-image: linear-gradient(rgb(var(--gray)) 1px, transparent 1px), linear-gradient(to right, rgb(var(--gray)) 1px, transparent 1px); */
-
-  /* Crosses */
-  /* background: radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 0% 0% / 40px 40px, radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 20px 20px / 40px 40px, linear-gradient(rgb(var(--gray)) 1px, transparent 1px) 0px -0.5px / 20px 20px, linear-gradient(90deg, rgb(var(--gray)) 1px, rgb(var(--bg-sec)) 1px) -0.5px 0px / 20px 20px rgb(var(--bg-sec)); */
-
   color: rgb(var(--fg-main));
   overflow-x: hidden;
 }

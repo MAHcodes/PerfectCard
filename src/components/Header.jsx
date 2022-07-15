@@ -1,17 +1,50 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
+import SelectUnit from "./SelectUnit";
+const BACKGROUNDS = {
+  Dots: {
+    img: "radial-gradient(rgb(var(--gray)) 1px,rgb(var(--bg-sec)) 1px)",
+    size: "20px 20px",
+  },
+  "Cross Dots": {
+    img: "radial-gradient(rgb(var(--gray)) 1px, transparent 1px), radial-gradient(rgb(var(--gray)) 1px, transparent 1px)",
+    position: "0 0, 10px 10px",
+    size: "20px 20px",
+  },
+  Grid: {
+    img: "linear-gradient(rgba(var(--gray), 50%) 1px, transparent 1px), linear-gradient(to right, rgba(var(--gray), 50%) 1px, transparent 1px)",
+    size: "20px 20px",
+  },
+  Crosses: {
+    bg: "radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 0% 0% / 40px 40px, radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 20px 20px / 40px 40px, linear-gradient(rgba(var(--gray), 50%) 1px, transparent 1px) 0px -0.5px / 20px 20px, linear-gradient(90deg, rgba(var(--gray), 50%) 1px, rgb(var(--bg-sec)) 1px) -0.5px 0px / 20px 20px rgb(var(--bg-sec))",
+    position: "0 0, 10px 10px",
+    size: "20px 20px",
+  }
+};
 
 const Header = () => {
   const [dark, setDark] = useState(false);
+  const [bg, setBg] = useState("Dots");
 
   useEffect(() => {
     document.body.className = dark ? "dark" : "light";
-  }, [dark]);
+    document.body.style.backgroundImage = BACKGROUNDS[bg].img;
+    document.body.style.backgroundSize = BACKGROUNDS[bg].size;
+    document.body.style.backgroundPosition = BACKGROUNDS[bg].position;
+    document.body.style.background = BACKGROUNDS[bg].bg;
+  }, [dark, bg]);
+
+  const handleBackground = (e) => {
+    localStorage.setItem("bg", JSON.stringify(e.target.value));
+    setBg(e.target.value);
+  };
 
   useEffect(() => {
     const theme = JSON.parse(localStorage.getItem("dark") || false);
     setDark(theme);
+    const bg = JSON.parse(localStorage.getItem("bg") || "Dots");
+    setBg(bg);
   }, []);
 
   const toggleTheme = () => {
@@ -22,7 +55,16 @@ const Header = () => {
   return (
     <Hdr>
       <H1>PerfectCart</H1>
-      <Button border val={dark ? <SunIcon /> : <MoonIcon />} action={toggleTheme} />
+      <SelectUnit
+        options={["Dots", "Cross Dots", "Grid", "Crosses"]}
+        onChange={handleBackground}
+        def={bg}
+      />
+      <Button
+        border
+        val={dark ? <SunIcon /> : <MoonIcon />}
+        action={toggleTheme}
+      />
     </Hdr>
   );
 };
@@ -57,6 +99,17 @@ const Hdr = styled.header`
   display: flex;
   justify-content: end;
   align-items: center;
+  gap: 1rem;
+
+  & > span > select {
+    width: 12ch;
+    padding-block: 0.35rem;
+    background-color: transparent;
+    &:focus,
+    &:active {
+      background-color: transparent;
+    }
+  }
 `;
 
 const H1 = styled.h1`

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const SelectUnit = ({onChange, options}) => {
+const SelectUnit = ({onChange, options, def }) => {
   return (
     <Wrapper>
-      <StyledSelect defaultValue={options[0]} onChange={onChange} >
+      <StyledSelect value={def || options[0]} onChange={onChange} >
         {options.map(option => (
           <option key={option} value={option}>{option}</option>
         ))}
