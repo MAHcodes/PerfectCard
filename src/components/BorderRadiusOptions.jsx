@@ -162,14 +162,9 @@ const BorderRadiusOptions = () => {
             />
             <NumberInput
               min={invert ? "" : "0"}
-              max={
-                invert
-                  ? cardCss.borderRadius[position].unit === "px"
-                    ? "300"
-                    : cardCss.borderRadius[position].unit === "rem"
-                    ? "50"
-                    : "100"
-                  : ""
+              max=
+              {
+                invert ? "0" : ""
               }
               value={cardCss.borderRadius[position][axis].value}
               onChange={(e) =>

@@ -4,6 +4,7 @@ const NumberInput = (props) => {
   return (
     <Number
       min={props.min}
+      max={props.max}
       type="number"
       value={Math.round(props.value)}
       onChange={props.onChange}

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import BorderRadiusOptions from "./BorderRadiusOptions";
 import { CardCssContext } from "../hooks/CardCSS";
+import BoxShadowOptions from "./BoxShadowOptions";
 
 const Options = () => {
   const { optionOpen, setOptionOpen } = useContext(CardCssContext);
@@ -15,6 +16,9 @@ const Options = () => {
       </Select>
       <Select setOpen={setOptionOpen} open={optionOpen} title="Border Radius">
         <BorderRadiusOptions active={optionOpen === "Border Radius"} />
+      </Select>
+      <Select setOpen={setOptionOpen} open={optionOpen} title="Box Shadow">
+        <BoxShadowOptions active={optionOpen === "Box Shadow"} />
       </Select>
     </Div>
   );
