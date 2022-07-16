@@ -44,7 +44,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const theme = JSON.parse(localStorage.getItem("dark"))|| false;
+    const theme = JSON.parse(localStorage.getItem("dark")) || false;
     setDark(theme);
     const bg = JSON.parse(localStorage.getItem("bg")) || "Dots";
     setBg(bg);

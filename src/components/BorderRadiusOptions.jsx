@@ -110,6 +110,7 @@ const BorderRadiusOptions = () => {
         />
         <SelectUnit
           options={["%", "px", "rem"]}
+          def={cardCss.allBorderRadiusUnit}
           onChange={(e) =>
             setCardCss({
               ...cardCss,
@@ -186,6 +187,7 @@ const BorderRadiusOptions = () => {
             />
             <SelectUnit
               options={["%", "px", "rem"]}
+              def={cardCss.borderRadius[position][axis].unit}
               onChange={(e) =>
                 setCardCss({
                   ...cardCss,

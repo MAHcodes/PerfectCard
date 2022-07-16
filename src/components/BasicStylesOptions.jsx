@@ -62,6 +62,7 @@ const BasicStyles = () => {
         />
         <SelectUnit
           options={["px", "rem", "%"]}
+          def={cardCss.widthUnit}
           onChange={(e) =>
             setCardCss({ ...cardCss, widthUnit: e.target.value })
           }
@@ -100,6 +101,7 @@ const BasicStyles = () => {
         />
         <SelectUnit
           options={["px", "rem", "%"]}
+          def={cardCss.heightUnit}
           onChange={(e) =>
             setCardCss({ ...cardCss, heightUnit: e.target.value })
           }
@@ -129,6 +131,7 @@ const BasicStyles = () => {
         </div>
         <SelectUnit
           options={["hex", "rgb", "hsl"]}
+          def={cardCss.bgUnit}
           onChange={(e) => {
             setCardCss({ ...cardCss, bgUnit: e.target.value });
           }}
