@@ -72,20 +72,20 @@ const BorderRadiusOptions = () => {
               ...cardCss,
               borderRadius: {
                 topLeft: {
-                  x: { ...cardCss.borderRadius.topLeft.x, value: 0 },
-                  y: { ...cardCss.borderRadius.topLeft.y, value: 0 },
+                  x: { ...cardCss.borderRadius.topLeft.x, value: +e.target.value  },
+                  y: { ...cardCss.borderRadius.topLeft.y, value: +e.target.value },
                 },
                 topRight: {
-                  x: { ...cardCss.borderRadius.topRight.x, value: 0 },
-                  y: { ...cardCss.borderRadius.topRight.y, value: 0 },
+                  x: { ...cardCss.borderRadius.topRight.x, value: -e.target.value  },
+                  y: { ...cardCss.borderRadius.topRight.y, value:  +e.target.value },
                 },
                 bottomRight: {
-                  x: { ...cardCss.borderRadius.bottomRight.x, value: 0 },
-                  y: { ...cardCss.borderRadius.bottomRight.y, value: 0 },
+                  x: { ...cardCss.borderRadius.bottomRight.x, value:  -e.target.value },
+                  y: { ...cardCss.borderRadius.bottomRight.y, value:  -e.target.value },
                 },
                 bottomLeft: {
-                  x: { ...cardCss.borderRadius.bottomLeft.x, value: 0 },
-                  y: { ...cardCss.borderRadius.bottomLeft.y, value: 0 },
+                  x: { ...cardCss.borderRadius.bottomLeft.x, value:  +e.target.value },
+                  y: { ...cardCss.borderRadius.bottomLeft.y, value:  -e.target.value },
                 },
               },
               allBorderRadius: e.target.value,
@@ -115,6 +115,24 @@ const BorderRadiusOptions = () => {
             setCardCss({
               ...cardCss,
               allBorderRadiusUnit: e.target.value,
+              borderRadius: {
+                topLeft: {
+                  x: { ...cardCss.borderRadius.topLeft.x, unit: e.target.value  },
+                  y: { ...cardCss.borderRadius.topLeft.y, unit: e.target.value },
+                },
+                topRight: {
+                  x: { ...cardCss.borderRadius.topRight.x, unit: e.target.value  },
+                  y: { ...cardCss.borderRadius.topRight.y, unit:  e.target.value },
+                },
+                bottomRight: {
+                  x: { ...cardCss.borderRadius.bottomRight.x, unit:  e.target.value },
+                  y: { ...cardCss.borderRadius.bottomRight.y, unit:  e.target.value },
+                },
+                bottomLeft: {
+                  x: { ...cardCss.borderRadius.bottomLeft.x, unit:  e.target.value },
+                  y: { ...cardCss.borderRadius.bottomLeft.y, unit:  e.target.value },
+                },
+              },
             })
           }
         />
@@ -153,7 +171,7 @@ const BorderRadiusOptions = () => {
                       ...cardCss.borderRadius[position],
                       [axis]: {
                         ...cardCss.borderRadius[position][axis],
-                        value: e.target.value,
+                        value: +e.target.value,
                       },
                     },
                   },

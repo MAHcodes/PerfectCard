@@ -11,14 +11,14 @@ const Code = () => {
   const ifBorderRadius = () => {
     const br = cardCss.borderRadius;
     return (
-      br.topLeft.x ||
-      br.topLeft.y ||
-      br.topRight.x ||
-      br.topRight.y ||
-      br.bottomRight.x ||
-      br.bottomRight.y ||
-      br.bottomLeft.x ||
-      br.bottomLeft.y
+      br.topLeft.x.value ||
+      br.topLeft.y.value ||
+      br.topRight.x.value ||
+      br.topRight.y.value ||
+      br.bottomRight.x.value ||
+      br.bottomRight.y.value ||
+      br.bottomLeft.x.value ||
+      br.bottomLeft.y.value
     );
   };
 

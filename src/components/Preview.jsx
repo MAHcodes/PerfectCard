@@ -34,31 +34,33 @@ const Preview = () => {
     // eslint-disable-next-line
   }, [sizes]);
 
+  const borderRadiusCSSValue = `${cardCss.borderRadius.topLeft.y.value}${
+    cardCss.borderRadius.topLeft.y.unit
+  } ${cardCss.borderRadius.topRight.y.value}${
+    cardCss.borderRadius.topRight.y.unit
+  } ${-cardCss.borderRadius.bottomRight.y.value}${
+    cardCss.borderRadius.bottomRight.y.unit
+  } ${-cardCss.borderRadius.bottomLeft.y.value}${
+    cardCss.borderRadius.bottomLeft.y.unit
+  } / ${cardCss.borderRadius.topLeft.x.value}${
+    cardCss.borderRadius.topLeft.x.unit
+  } ${-cardCss.borderRadius.topRight.x.value}${
+    cardCss.borderRadius.topRight.x.unit
+  } ${-cardCss.borderRadius.bottomRight.x.value}${
+    cardCss.borderRadius.bottomRight.x.unit
+  } ${cardCss.borderRadius.bottomLeft.x.value}${
+    cardCss.borderRadius.bottomLeft.x.unit
+  }`;
+
   return (
-    <Box ref={parentRef}>
+    <Box boxShadow={optionOpen === "Box Shadow"} ref={parentRef}>
       <Card
         style={{
           width: `${cardCss.width}${cardCss.widthUnit}`,
           height: `${cardCss.height}${cardCss.heightUnit}`,
-          borderRadius: cardCss.allBorderRadius
+          borderRadius: +cardCss.allBorderRadius
             ? `${cardCss.allBorderRadius}${cardCss.allBorderRadiusUnit}`
-            : `${cardCss.borderRadius.topLeft.y.value}${
-                cardCss.borderRadius.topLeft.y.unit
-              } ${cardCss.borderRadius.topRight.y.value}${
-                cardCss.borderRadius.topRight.y.unit
-              } ${-cardCss.borderRadius.bottomRight.y.value}${
-                cardCss.borderRadius.bottomRight.y.unit
-              } ${-cardCss.borderRadius.bottomLeft.y.value}${
-                cardCss.borderRadius.bottomLeft.y.unit
-              } / ${cardCss.borderRadius.topLeft.x.value}${
-                cardCss.borderRadius.topLeft.x.unit
-              } ${-cardCss.borderRadius.topRight.x.value}${
-                cardCss.borderRadius.topRight.x.unit
-              } ${-cardCss.borderRadius.bottomRight.x.value}${
-                cardCss.borderRadius.bottomRight.x.unit
-              } ${cardCss.borderRadius.bottomLeft.x.value}${
-                cardCss.borderRadius.bottomLeft.x.unit
-              }`,
+            : `${borderRadiusCSSValue}`,
           backgroundColor: cardCss.bgColor || "rgb(var(--white))",
           overflow: optionOpen === "Basic Styles" ? "scroll" : "visible",
         }}
@@ -70,10 +72,9 @@ const Preview = () => {
           <BorderRadiusControls cardCss={cardCss} setCardCss={setCardCss} />
         ) : undefined}
 
-        { optionOpen === "Box Shadow" ? (
+        {optionOpen === "Box Shadow" ? (
           <BoxShadowControls cardCss={cardCss} setCardCss={setCardCss} />
-        ) : undefined }
-
+        ) : undefined}
       </Card>
     </Box>
   );
@@ -85,7 +86,7 @@ const Box = styled.div`
   border-radius: 0.4rem;
   margin-bottom: 2rem;
   display: flex;
-  overflow: auto;
+  overflow: ${(props) => (props.boxShadow ? "visible" : "auto")};
 `;
 
 const Card = styled.div`
