@@ -13,16 +13,15 @@ const Preview = () => {
   const cardRef = useRef(null);
 
   useEffect(() => {
-    let boxShadowString = "";
-    cardCss.boxShadow.forEach((item, i) => {
-      if (i === 0) {
-        boxShadowString += `${item.inset ? "inset" : ""} ${item.x} ${item.y} ${ item.blur } ${item.spread} ${item.color}`;
-      }
-    });
-    setGenBoxS(boxShadowString);
-  }, [cardCss.boxShadow]);
+    const active = cardCss.boxShadow[cardCss.activeBoxShadow];
+    setGenBoxS(
+      `${-active.x}px ${-active.y}px ${active.blur}px ${active.spread}px ${
+        active.color
+      } ${active.inset ? "inset" : ""}`
+    );
 
-  console.log(genBoxS);
+    console.log(genBoxS);
+  }, [cardCss.boxShadow]);
 
   useEffect(() => {
     if (sizes.width && sizes.height) {

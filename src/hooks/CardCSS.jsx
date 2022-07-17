@@ -21,7 +21,18 @@ const CardCssContextProvider = (props) => {
     },
     allBorderRadius: 0,
     allBorderRadiusUnit: "%",
-    boxShadow: [{ x: 0, y: 0, deg: 0, inset: false, color: "#000000", blur: 0, spread: 0 }],
+    boxShadow: {
+      0: {
+        x: 0,
+        y: 0,
+        deg: 0,
+        inset: false,
+        color: "#000000",
+        blur: 0,
+        spread: 0,
+      },
+    },
+    activeBoxShadow: 0,
   };
 
   const [cardCss, setCardCss] = useState(defaultCss);

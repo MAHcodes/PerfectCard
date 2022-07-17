@@ -8,31 +8,42 @@ const BoxShadowControls = ({ cardRef }) => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
 
   useEffect(() => {
-    const newBoxShadow = cardCss.boxShadow.map((item, i) => i === 0 ? { ...cardCss.boxShadow[i], x: 100 + cardRef.current.clientWidth / 2 - controlRef.current.clientWidth / 2, } : item);
     setCardCss({
       ...cardCss,
-      boxShadow: newBoxShadow,
+      boxShadow: {
+        ...cardCss.boxShadow,
+        [cardCss.activeBoxShadow]: {
+          ...cardCss.boxShadow[cardCss.activeBoxShadow],
+          x:
+            100 +
+            cardRef.current.clientWidth / 2 -
+            controlRef.current.clientWidth / 2,
+        },
+      },
     });
     //eslint-disable-next-line
   }, []);
 
   const handleDrag = (data) => {
-    const currentX =
-      data.x +
-      100 +
-      cardRef.current.clientWidth / 2 -
-      controlRef.current.clientWidth / 2;
+    const currentX = data.x + 100 + cardRef.current.clientWidth / 2 - controlRef.current.clientWidth / 2;
     const currentY = data.y;
+    const newBoxShadow = {
+      ...cardCss.boxShadow[cardCss.activeBoxShadow],
+      x: currentX,
+      y: currentY,
+      deg: (Math.atan2(currentY, currentX) * 180) / Math.PI,
+      inset: false,
+      color: "rgb(0, 0, 0)",
+      blur: 0,
+      spread: 0,
+    };
 
     setCardCss({
       ...cardCss,
-      boxShadow: [
-        {
-          x: currentX,
-          y: currentY,
-          deg: (Math.atan2(currentY, currentX) * 180) / Math.PI,
-        },
-      ],
+      boxShadow: {
+        ...cardCss.boxShadow,
+        [cardCss.activeBoxShadow]: newBoxShadow,
+      },
     });
   };
 
