@@ -71,6 +71,9 @@ const Code = () => {
               />
             </>
           ) : undefined}
+          <br />
+          <Comment>{"/* Border Radius */"}</Comment>
+          <CSSPropVal prop="box-shadow" val={""} />
           {"}"}
         </code>
       </Pre>

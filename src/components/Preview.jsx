@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { CardCssContext } from "../hooks/CardCSS";
 import useResizeAware from "react-resize-aware";
 import BorderRadiusControls from "./BorderRadiusControls";
@@ -8,7 +8,21 @@ import BoxShadowControls from "./BoxShadowControls";
 const Preview = () => {
   const { cardCss, setCardCss, optionOpen } = useContext(CardCssContext);
   const [resizeListener, sizes] = useResizeAware();
+  const [genBoxS, setGenBoxS] = useState(0);
   const parentRef = useRef(null);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    let boxShadowString = "";
+    cardCss.boxShadow.forEach((item, i) => {
+      if (i === 0) {
+        boxShadowString += `${item.inset ? "inset" : ""} ${item.x} ${item.y} ${ item.blur } ${item.spread} ${item.color}`;
+      }
+    });
+    setGenBoxS(boxShadowString);
+  }, [cardCss.boxShadow]);
+
+  console.log(genBoxS);
 
   useEffect(() => {
     if (sizes.width && sizes.height) {
@@ -55,6 +69,7 @@ const Preview = () => {
   return (
     <Box boxShadow={optionOpen === "Box Shadow"} ref={parentRef}>
       <Card
+        ref={cardRef}
         style={{
           width: `${cardCss.width}${cardCss.widthUnit}`,
           height: `${cardCss.height}${cardCss.heightUnit}`,
@@ -63,6 +78,7 @@ const Preview = () => {
             : `${borderRadiusCSSValue}`,
           backgroundColor: cardCss.bgColor || "rgb(var(--white))",
           overflow: optionOpen === "Basic Styles" ? "scroll" : "visible",
+          boxShadow: genBoxS,
         }}
       >
         <h2>Preview</h2>
@@ -73,7 +89,11 @@ const Preview = () => {
         ) : undefined}
 
         {optionOpen === "Box Shadow" ? (
-          <BoxShadowControls cardCss={cardCss} setCardCss={setCardCss} />
+          <BoxShadowControls
+            cardRef={cardRef}
+            cardCss={cardCss}
+            setCardCss={setCardCss}
+          />
         ) : undefined}
       </Card>
     </Box>
@@ -86,7 +106,7 @@ const Box = styled.div`
   border-radius: 0.4rem;
   margin-bottom: 2rem;
   display: flex;
-  overflow: ${(props) => (props.boxShadow ? "visible" : "auto")};
+  overflow: auto;
 `;
 
 const Card = styled.div`

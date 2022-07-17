@@ -137,6 +137,8 @@ const BorderRadiusOptions = () => {
           }
         />
       </Property>
+        <br />
+      <hr />
 
       {properties.map(({ title, position, axis, invert }, idx) => (
         <Fragment key={idx}>
