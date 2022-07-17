@@ -58,3 +58,9 @@ body {
   color: rgb(var(--bg-main));
   background-color: rgb(var(--accent));
 }
+
+hr {
+  height: 1px;
+  margin-block: .5rem;
+  background-color: rgba(var(--gray), 75%);
+}
