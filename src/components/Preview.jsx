@@ -15,9 +15,9 @@ const Preview = () => {
   useEffect(() => {
     const active = cardCss.boxShadow[cardCss.activeBoxShadow];
     setGenBoxS(
-      `${-active.x}px ${-active.y}px ${active.blur}px ${active.spread}px ${
+      `${active.inset ? "inset" : ""} ${-active.x}px ${-active.y}px ${active.blur}px ${active.spread}px ${
         active.color
-      } ${active.inset ? "inset" : ""}`
+      }`
     );
 
     console.log(genBoxS);

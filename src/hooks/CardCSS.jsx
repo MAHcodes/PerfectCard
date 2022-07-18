@@ -33,6 +33,7 @@ const CardCssContextProvider = (props) => {
       },
     },
     activeBoxShadow: 0,
+    lightSource: {x: 0, y: 0},
   };
 
   const [cardCss, setCardCss] = useState(defaultCss);
