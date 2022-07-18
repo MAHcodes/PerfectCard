@@ -19,8 +19,7 @@ const Preview = () => {
         active.color
       }`
     );
-
-    console.log(genBoxS);
+    console.log(active)
   }, [cardCss.boxShadow]);
 
   useEffect(() => {

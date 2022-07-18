@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Draggable from "react-draggable";
 import { CardCssContext } from "../hooks/CardCSS";
 import { useContext, useEffect, useRef } from "react";
+import RangeInput from "./RangeInput";
 
 const BoxShadowControls = ({ cardRef }) => {
   const controlRef = useRef(null);
@@ -14,7 +15,11 @@ const BoxShadowControls = ({ cardRef }) => {
         ...cardCss.boxShadow,
         [cardCss.activeBoxShadow]: {
           ...cardCss.boxShadow[cardCss.activeBoxShadow],
-          x: cardCss.lightSource.x + 100 + cardRef.current.clientWidth /2 - controlRef.current.clientWidth /2 ,
+          x:
+            Math.round((cardCss.lightSource.x +
+            100 +
+            cardRef.current.clientWidth / 2 -
+            controlRef.current.clientWidth / 2 ) /3),
         },
       },
     });
@@ -30,13 +35,9 @@ const BoxShadowControls = ({ cardRef }) => {
     const currentY = data.y;
     const newBoxShadow = {
       ...cardCss.boxShadow[cardCss.activeBoxShadow],
-      x: currentX,
-      y: currentY,
-      deg: (Math.atan2(currentY, currentX) * 180) / Math.PI,
-      inset: false,
-      color: "rgb(0, 0, 0)",
-      blur: 0,
-      spread: 0,
+      x: Math.round(currentX / 3),
+      y: Math.round(currentY / 3),
+      // deg: (Math.atan2(currentY, currentX) * 180) / Math.PI,
     };
 
     setCardCss({
@@ -48,26 +49,57 @@ const BoxShadowControls = ({ cardRef }) => {
       lightSource: {
         x: data.x,
         y: data.y,
-      }
+      },
+    });
+  };
+
+  const handleBlur = (e) => {
+    setCardCss({
+      ...cardCss,
+      boxShadow: {
+        ...cardCss.boxShadow,
+        [cardCss.activeBoxShadow]: {
+          ...cardCss.boxShadow[cardCss.activeBoxShadow],
+          blur: e.target.value,
+        },
+      },
     });
   };
 
   return (
     <Draggable
       onDrag={(_, data) => handleDrag(data)}
-      position={{x: cardCss.lightSource.x, y: cardCss.lightSource.y }}
+      position={{ x: cardCss.lightSource.x, y: cardCss.lightSource.y }}
+      handle="#handle"
     >
-      <Div ref={controlRef}> <LightIcon /> </Div>
+      <Div ref={controlRef}>
+        {" "}
+        <LightIcon cardCss={cardCss} />
+        <RangeInput
+          onChange={handleBlur}
+          value={cardCss.boxShadow[cardCss.activeBoxShadow].blur}
+          min="0"
+          max="100"
+        />
+      </Div>
     </Draggable>
   );
 };
 
-const LightIcon = () => (
+const LightIcon = ({ cardCss }) => (
   <Svg
+    style={{
+      filter: `drop-shadow(0px 0px ${
+        cardCss.boxShadow[cardCss.activeBoxShadow].blur > 20
+          ? cardCss.boxShadow[cardCss.activeBoxShadow].blur / 3
+          : 10
+      }px #fff)`,
+    }}
     width="32"
     height="32"
     viewBox="0 0 32 32"
     fill="none"
+    id="handle"
   >
     <g>
       <path
@@ -126,12 +158,28 @@ const Div = styled.div`
   &:active {
     cursor: grabbing;
   }
+  & > input {
+    position: absolute;
+    /* border: 1px solid red; */
+    inset: -85% 0 auto -0.9rem;
+    transform: rotate(-90deg);
+    min-width: 7rem;
+    padding-inline-start: 2rem;
+    padding-block: 2rem;
+    margin-block: auto;
+    opacity: 0;
+    transition: opacity var(--transition-d) var(--transition-tf );
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &:hover > input {
+    opacity: 1 !important;
+  }
 `;
 
 const Svg = styled.svg`
-  filter: drop-shadow(0px 0px 1rem #fff);
   width: 5rem;
   height: 5rem;
-`
-
+`;
 export default BoxShadowControls;

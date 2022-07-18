@@ -25,7 +25,6 @@ const CardCssContextProvider = (props) => {
       0: {
         x: 0,
         y: 0,
-        deg: 0,
         inset: false,
         color: "#000000",
         blur: 0,
