@@ -73,7 +73,6 @@ const BoxShadowControls = ({ cardRef }) => {
       handle="#handle"
     >
       <Div ref={controlRef}>
-        {" "}
         <LightIcon cardCss={cardCss} />
         <RangeInput
           onChange={handleBlur}
@@ -161,10 +160,9 @@ const Div = styled.div`
   & > input {
     position: absolute;
     /* border: 1px solid red; */
-    inset: -85% 0 auto -0.9rem;
+    inset: -110% 0 auto .2rem;
     transform: rotate(-90deg);
-    min-width: 7rem;
-    padding-inline-start: 2rem;
+    min-width: 5rem;
     padding-block: 2rem;
     margin-block: auto;
     opacity: 0;

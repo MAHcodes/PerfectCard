@@ -19,10 +19,24 @@ const BACKGROUNDS = {
     img: "linear-gradient(rgba(var(--gray), 50%) 1px, transparent 1px), linear-gradient(to right, rgba(var(--gray), 50%) 1px, transparent 1px)",
     size: "20px 20px",
   },
+  Paper: {
+    img: "linear-gradient(rgba(var(--gray), 20%) 2px, transparent 2px), linear-gradient(90deg, rgba(var(--gray), 20%) 2px, transparent 2px), linear-gradient(rgba(var(--gray), 20%) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--gray), 20%) 1px, rgb(var(--bg-sec)) 1px)",
+    size: "60px 60px, 60px 60px, 20px 20px, 20px 20px",
+    position: "-2px -2px, -2px -2px, -1px -1px, -1px -1px",
+  },
   Crosses: {
-    bg: "radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 0% 0% / 40px 40px, radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 20px 20px / 40px 40px, linear-gradient(rgba(var(--gray), 50%) 1px, transparent 1px) 0px -0.5px / 20px 20px, linear-gradient(90deg, rgba(var(--gray), 50%) 1px, rgb(var(--bg-sec)) 1px) -0.5px 0px / 20px 20px rgb(var(--bg-sec))",
-    position: "0 0, 10px 10px",
+    bg: "radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 0% 0% / 40px 40px, radial-gradient(circle, transparent 20%, rgb(var(--bg-sec)) 20%, rgb(var(--bg-sec)) 80%, transparent 80%, transparent) 20px 20px / 40px 40px, linear-gradient(rgba(var(--gray), 60%) 1px, transparent 1px) 0px -0.5px / 20px 20px, linear-gradient(90deg, rgba(var(--gray), 60%) 1px, rgb(var(--bg-sec)) 1px) -0.5px 0px / 20px 20px rgb(var(--bg-sec))",
+    position: "0 0, 15px 15px",
+    size: "30px 30px",
+  },
+  Diagonal: {
+    img: "repeating-linear-gradient(45deg, rgba(var(--gray), 50%) 0, rgba(var(--gray), 50%) 1px, rgb(var(--bg-sec)) 0, rgb(var(--bg-sec)) 50%)",
     size: "20px 20px",
+  },
+  Cubes: {
+    img: "linear-gradient(30deg, rgba(var(--gray), 15%) 12%, transparent 12.5%, transparent 87%, rgba(var(--gray), 15%) 87.5%, rgba(var(--gray), 15%)), linear-gradient(150deg, rgba(var(--gray), 15%) 12%, transparent 12.5%, transparent 87%, rgba(var(--gray), 15%) 87.5%, rgba(var(--gray), 15%)), linear-gradient(30deg, rgba(var(--gray), 15%) 12%, transparent 12.5%, transparent 87%, rgba(var(--gray), 15%) 87.5%, rgba(var(--gray), 15%)), linear-gradient(150deg, rgba(var(--gray), 15%) 12%, transparent 12.5%, transparent 87%, rgba(var(--gray), 15%) 87.5%, rgba(var(--gray), 15%)), linear-gradient(60deg, rgba(var(--accent), 8%) 15%, transparent 25.5%, transparent 75%, rgba(var(--accent), 8%) 75%, rgba(var(--accent), 8%)), linear-gradient(60deg, rgba(var(--accent), 8%) 15%, transparent 25.5%, transparent 75%, rgba(var(--accent), 8%) 75%, rgba(var(--accent), 8%))",
+    size: "20px 35px",
+    position: "0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px",
   },
 };
 
@@ -32,10 +46,10 @@ const Header = () => {
 
   useEffect(() => {
     document.body.className = dark ? "dark" : "light";
+    document.body.style.background = BACKGROUNDS[bg].bg;
     document.body.style.backgroundImage = BACKGROUNDS[bg].img;
     document.body.style.backgroundSize = BACKGROUNDS[bg].size;
     document.body.style.backgroundPosition = BACKGROUNDS[bg].position;
-    document.body.style.background = BACKGROUNDS[bg].bg;
   }, [dark, bg]);
 
   const handleBackground = (e) => {
@@ -59,7 +73,7 @@ const Header = () => {
     <Hdr>
       <H1>PerfectCart</H1>
       <SelectUnit
-        options={["No Background", "Dots", "Cross Dots", "Grid", "Crosses"]}
+        options={[...Object.keys(BACKGROUNDS)]}
         onChange={handleBackground}
         def={bg}
       />
