@@ -4,6 +4,7 @@ import { CardCssContext } from "../hooks/CardCSS";
 import useResizeAware from "react-resize-aware";
 import BorderRadiusControls from "./BorderRadiusControls";
 import BoxShadowControls from "./BoxShadowControls";
+import SpreadControl from "./SpreadControl";
 
 const Preview = () => {
   const { cardCss, setCardCss, optionOpen } = useContext(CardCssContext);
@@ -14,11 +15,11 @@ const Preview = () => {
   useEffect(() => {
     const active = cardCss.boxShadow[cardCss.activeBoxShadow];
     setGenBoxS(
-      `${active.inset ? "inset" : ""} ${-active.x}px ${-active.y}px ${active.blur}px ${active.spread}px ${
-        active.color
-      }`
+      `${active.inset ? "inset" : ""} ${-active.x}px ${-active.y}px ${
+        active.blur
+      }px ${active.spread}px ${active.color}`
     );
-    console.log(active)
+    console.log(active);
   }, [cardCss.boxShadow]);
 
   useEffect(() => {
@@ -85,10 +86,10 @@ const Preview = () => {
         ) : undefined}
 
         {optionOpen === "Box Shadow" ? (
-          <BoxShadowControls
-            cardCss={cardCss}
-            setCardCss={setCardCss}
-          />
+          <>
+            <BoxShadowControls cardCss={cardCss} setCardCss={setCardCss} />
+            <SpreadControl cardCss={cardCss} setCardCss={setCardCss} />
+          </>
         ) : undefined}
       </Card>
     </Box>
@@ -102,6 +103,7 @@ const Box = styled.div`
   margin-bottom: 2rem;
   display: flex;
   overflow: auto;
+  position: relative;
 `;
 
 const Card = styled.div`

@@ -117,6 +117,8 @@ const Hdr = styled.header`
   justify-content: end;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  z-index: 20;
 
   & > span > select {
     width: auto;

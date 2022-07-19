@@ -37,7 +37,10 @@ const CardCssContextProvider = (props) => {
 
   const [cardCss, setCardCss] = useState(defaultCss);
 
-  const setDefaults = () => setCardCss(defaultCss);
+  const setDefaults = () => {
+    setCardCss(defaultCss);
+    setOptionOpen("");
+  }
 
   return (
     <CardCssContext.Provider

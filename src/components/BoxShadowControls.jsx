@@ -1,27 +1,23 @@
 import styled from "styled-components";
 import Draggable from "react-draggable";
 import { CardCssContext } from "../hooks/CardCSS";
-import { useContext} from "react";
+import { useContext } from "react";
 import RangeInput from "./RangeInput";
 
 const BoxShadowControls = () => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
 
   const handleDrag = (data) => {
-    const currentX = data.x;
-    const currentY = data.y;
-    const newBoxShadow = {
-      ...cardCss.boxShadow[cardCss.activeBoxShadow],
-      x: Math.round(currentX / 3),
-      y: Math.round(currentY / 3),
-      // deg: (Math.atan2(currentY, currentX) * 180) / Math.PI,
-    };
-
     setCardCss({
       ...cardCss,
       boxShadow: {
         ...cardCss.boxShadow,
-        [cardCss.activeBoxShadow]: newBoxShadow,
+        [cardCss.activeBoxShadow]: {
+          ...cardCss.boxShadow[cardCss.activeBoxShadow],
+          x: Math.round(data.x / 2.5),
+          y: Math.round(data.y / 2),
+          // deg: (Math.atan2(currentY, currentX) * 180) / Math.PI,
+        },
       },
       lightSource: {
         x: data.x,
@@ -55,7 +51,7 @@ const BoxShadowControls = () => {
           onChange={handleBlur}
           value={cardCss.boxShadow[cardCss.activeBoxShadow].blur}
           min="0"
-          max="100"
+          max="200"
         />
       </Div>
     </Draggable>
@@ -127,7 +123,7 @@ const LightIcon = ({ cardCss }) => (
 const Div = styled.div`
   position: absolute;
   color: rgb(var(--black));
-  z-index: 100;
+  z-index: 15;
   cursor: grab;
   margin: auto;
   mix-blend-mode: difference;
@@ -137,13 +133,13 @@ const Div = styled.div`
   & > input {
     position: absolute;
     /* border: 1px solid red; */
-    inset: -110% 0 auto .2rem;
+    inset: -110% 0 auto 0.2rem;
     transform: rotate(-90deg);
     min-width: 5rem;
     padding-block: 2rem;
     margin-block: auto;
     opacity: 0;
-    transition: opacity var(--transition-d) var(--transition-tf );
+    transition: opacity var(--transition-d) var(--transition-tf);
     &:hover {
       opacity: 1;
     }
