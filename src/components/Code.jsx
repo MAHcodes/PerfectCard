@@ -40,6 +40,13 @@ const Code = () => {
     cardCss.borderRadius.bottomLeft.x.unit
   }`;
 
+  const genBoxShadow = () => {
+    const active = cardCss.boxShadow[cardCss.activeBoxShadow];
+    return `${active.inset ? "inset" : ""} ${-active.x}px ${-active.y}px ${
+      active.blur
+    }px ${active.spread}px ${active.color}`;
+  };
+
   return (
     <Div>
       <CodeHeader codeRef={codeRef} />
@@ -73,8 +80,7 @@ const Code = () => {
           ) : undefined}
           <br />
           <Comment>{"/* Border Radius */"}</Comment>
-          <CSSPropVal prop="box-shadow" val={""} />
-          {"}"}
+          <CSSPropVal prop="box-shadow" val={genBoxShadow()} />
         </code>
       </Pre>
     </Div>

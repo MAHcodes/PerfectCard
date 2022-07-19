@@ -10,7 +10,6 @@ const Preview = () => {
   const [resizeListener, sizes] = useResizeAware();
   const [genBoxS, setGenBoxS] = useState(0);
   const parentRef = useRef(null);
-  const cardRef = useRef(null);
 
   useEffect(() => {
     const active = cardCss.boxShadow[cardCss.activeBoxShadow];
@@ -67,7 +66,6 @@ const Preview = () => {
   return (
     <Box boxShadow={optionOpen === "Box Shadow"} ref={parentRef}>
       <Card
-        ref={cardRef}
         style={{
           width: `${cardCss.width}${cardCss.widthUnit}`,
           height: `${cardCss.height}${cardCss.heightUnit}`,
@@ -88,7 +86,6 @@ const Preview = () => {
 
         {optionOpen === "Box Shadow" ? (
           <BoxShadowControls
-            cardRef={cardRef}
             cardCss={cardCss}
             setCardCss={setCardCss}
           />

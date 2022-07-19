@@ -1,37 +1,14 @@
 import styled from "styled-components";
 import Draggable from "react-draggable";
 import { CardCssContext } from "../hooks/CardCSS";
-import { useContext, useEffect, useRef } from "react";
+import { useContext} from "react";
 import RangeInput from "./RangeInput";
 
-const BoxShadowControls = ({ cardRef }) => {
-  const controlRef = useRef(null);
+const BoxShadowControls = () => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
 
-  useEffect(() => {
-    setCardCss({
-      ...cardCss,
-      boxShadow: {
-        ...cardCss.boxShadow,
-        [cardCss.activeBoxShadow]: {
-          ...cardCss.boxShadow[cardCss.activeBoxShadow],
-          x:
-            Math.round((cardCss.lightSource.x +
-            100 +
-            cardRef.current.clientWidth / 2 -
-            controlRef.current.clientWidth / 2 ) /3),
-        },
-      },
-    });
-    //eslint-disable-next-line
-  }, []);
-
   const handleDrag = (data) => {
-    const currentX =
-      data.x +
-      100 +
-      cardRef.current.clientWidth / 2 -
-      controlRef.current.clientWidth / 2;
+    const currentX = data.x;
     const currentY = data.y;
     const newBoxShadow = {
       ...cardCss.boxShadow[cardCss.activeBoxShadow],
@@ -72,7 +49,7 @@ const BoxShadowControls = ({ cardRef }) => {
       position={{ x: cardCss.lightSource.x, y: cardCss.lightSource.y }}
       handle="#handle"
     >
-      <Div ref={controlRef}>
+      <Div>
         <LightIcon cardCss={cardCss} />
         <RangeInput
           onChange={handleBlur}
@@ -151,8 +128,8 @@ const Div = styled.div`
   position: absolute;
   color: rgb(var(--black));
   z-index: 100;
-  right: -100px;
   cursor: grab;
+  margin: auto;
   mix-blend-mode: difference;
   &:active {
     cursor: grabbing;
