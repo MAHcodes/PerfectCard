@@ -7,12 +7,11 @@ const SpreadControl = ({ cardCss, setCardCss }) => {
 
   const handleDown = (e) => {
     setIsDown(true);
-    setStartY(e.pageY);
+    setStartY(e.pageY + cardCss.boxShadow[cardCss.activeBoxShadow].spread);
   };
 
   const handleMove = (e) => {
     if (!isDown) return;
-    console.log();
 
     setCardCss({
       ...cardCss,

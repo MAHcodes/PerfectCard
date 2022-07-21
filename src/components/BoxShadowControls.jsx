@@ -14,8 +14,8 @@ const BoxShadowControls = () => {
         ...cardCss.boxShadow,
         [cardCss.activeBoxShadow]: {
           ...cardCss.boxShadow[cardCss.activeBoxShadow],
-          x: Math.round(data.x / 2.5),
-          y: Math.round(data.y / 2),
+          x: -Math.round(data.x / 2.5),
+          y: -Math.round(data.y / 2),
           // deg: (Math.atan2(currentY, currentX) * 180) / Math.PI,
         },
       },
