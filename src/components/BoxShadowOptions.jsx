@@ -20,6 +20,10 @@ const BoxShadowOptions = () => {
           [key]: +e.target.value,
         },
       },
+      lightSource: {
+        x: key === "x" ? Math.round(-e.target.value * 2.5) : cardCss.lightSource.x,
+        y: key === "y" ? Math.round(-e.target.value *2 ) : cardCss.lightSource.y,
+      }
     });
   };
 
@@ -35,8 +39,8 @@ const BoxShadowOptions = () => {
           >
             <Property title="X">
               <RangeInput
-                min="-100"
-                max="100"
+                min="-200"
+                max="200"
                 value={entry[1].x}
                 onChange={(e) => handleChange(e, "x", entry)}
               />
@@ -63,7 +67,7 @@ const BoxShadowOptions = () => {
             <Property title="Blur">
               <RangeInput
                 min="0"
-                max="100"
+                max="200"
                 value={entry[1].blur}
                 onChange={(e) => handleChange(e, "blur", entry)}
               />
@@ -76,8 +80,8 @@ const BoxShadowOptions = () => {
 
             <Property title="Spread">
               <RangeInput
-                min="-100"
-                max="100"
+                min="-150"
+                max="150"
                 value={entry[1].spread}
                 onChange={(e) => handleChange(e, "spread", entry)}
               />
