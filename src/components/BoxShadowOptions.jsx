@@ -9,7 +9,7 @@ import Switch from "./Switch";
 
 const BoxShadowOptions = () => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
-  const [open, setOpen] = useState("");
+  const [open, setOpen] = useState(cardCss.activeBoxShadow);
   const entries = Object.entries(cardCss.boxShadow);
 
   const onUnitChange = (e) => {
@@ -87,7 +87,8 @@ const BoxShadowOptions = () => {
           <Select
             key={entry[0]}
             setOpen={setOpen}
-            open={open}
+            onClick={() => setCardCss({...cardCss, activeBoxShadow: entry[0]})}
+            open={open.toString()}
             title={`${[entry[0]]}`}
           >
             <Switch title="Inset" on={entry[1].inset} onClick={handleInsetChange} />

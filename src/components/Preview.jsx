@@ -13,13 +13,20 @@ const Preview = () => {
   const parentRef = useRef(null);
 
   useEffect(() => {
-    const active = cardCss.boxShadow[cardCss.activeBoxShadow];
-    setGenBoxS(
-      `${active.inset ? "inset" : ""} ${active.x}px ${active.y}px ${
-        active.blur
-      }px ${active.spread}px ${active.color}`
-    );
-    // console.log(active);
+    let generatedBoxShadow = "";
+    Object.values(cardCss.boxShadow).map((shadow, i) => {
+      if (i >= Object.values(cardCss.boxShadow).length - 1) {
+        generatedBoxShadow += `${shadow.inset ? "inset" : ""} ${shadow.x}px ${
+          shadow.y
+        }px ${shadow.blur}px ${shadow.spread}px ${shadow.color}`;
+      } else {
+        generatedBoxShadow += `${shadow.inset ? "inset" : ""} ${shadow.x}px ${
+          shadow.y
+        }px ${shadow.blur}px ${shadow.spread}px ${shadow.color},`;
+      }
+    });
+    setGenBoxS(generatedBoxShadow);
+    console.log(generatedBoxShadow)
   }, [cardCss.boxShadow]);
 
   useEffect(() => {

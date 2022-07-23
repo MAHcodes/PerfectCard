@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import ArrowIcon from "./ArrowIcon";
 
-const Select = ({ title, open, children, setOpen }) => {
+const Select = ({ title, open, children, setOpen, onClick }) => {
   const active = open === title;
   return (
     <Div>
-      <Title active={active} onClick={() => {active ? setOpen("") : setOpen(title)} }>
+      <Title active={active} onClick={() => {active ? setOpen("") : setOpen(title); onClick()} }>
         <Icon active={active}>
           <ArrowIcon fill={active ? "rgba(var(--accent), 80%)" : "rgb(var(--fg-main))"} />
         </Icon>
