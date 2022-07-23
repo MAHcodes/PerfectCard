@@ -4,11 +4,47 @@ import { useContext, useState } from "react";
 import { CardCssContext } from "../hooks/CardCSS";
 import Select from "./Select";
 import NumberInput from "./NumberInput";
+import SelectColor from "./SelectColor";
+import Switch from "./Switch";
 
 const BoxShadowOptions = () => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
   const [open, setOpen] = useState("");
   const entries = Object.entries(cardCss.boxShadow);
+
+  const onUnitChange = (e) => {
+    setCardCss({
+      ...cardCss,
+      boxShadow: {
+        ...cardCss.boxShadow,
+        [cardCss.activeBoxShadow]: {
+          ...cardCss.boxShadow[cardCss.activeBoxShadow],
+          clrUnit: e.target.value,
+        },
+      },
+    });
+  };
+
+  const handleColorChange = ({ hex, rgb, hsl }) => {
+    const bg =
+      cardCss.boxShadow[cardCss.activeBoxShadow].clrUnit === "rgb"
+        ? `rgba(${rgb.r} ${rgb.b} ${rgb.b} / ${rgb.a})`
+        : cardCss.boxShadow[cardCss.activeBoxShadow].clrUnit === "hsl"
+        ? `hsla(${Math.round(hsl.h)} ${Math.round(hsl.s * 100)}% ${Math.round(
+            hsl.l * 100
+          )}% / ${hsl.a} )`
+        : hex;
+    setCardCss({
+      ...cardCss,
+      boxShadow: {
+        ...cardCss.boxShadow,
+        [cardCss.activeBoxShadow]: {
+          ...cardCss.boxShadow[cardCss.activeBoxShadow],
+          color: bg,
+        },
+      },
+    });
+  };
 
   const handleChange = (e, key, entry) => {
     setCardCss({
@@ -21,11 +57,28 @@ const BoxShadowOptions = () => {
         },
       },
       lightSource: {
-        x: key === "x" ? Math.round(-e.target.value * 2.5) : cardCss.lightSource.x,
-        y: key === "y" ? Math.round(-e.target.value *2 ) : cardCss.lightSource.y,
-      }
+        x:
+          key === "x"
+            ? Math.round(-e.target.value * 2.5)
+            : cardCss.lightSource.x,
+        y:
+          key === "y" ? Math.round(-e.target.value * 2) : cardCss.lightSource.y,
+      },
     });
   };
+
+  const handleInsetChange = () => {
+    setCardCss({
+      ...cardCss,
+      boxShadow: {
+        ...cardCss.boxShadow,
+        [cardCss.activeBoxShadow]: {
+          ...cardCss.boxShadow[cardCss.activeBoxShadow],
+          inset: !cardCss.boxShadow[cardCss.activeBoxShadow].inset,
+        },
+      },
+    })
+  }
 
   return (
     <div>
@@ -37,6 +90,8 @@ const BoxShadowOptions = () => {
             open={open}
             title={`${[entry[0]]}`}
           >
+            <Switch title="Inset" on={entry[1].inset} onClick={handleInsetChange} />
+            <br />
             <Property title="X">
               <RangeInput
                 min="-200"
@@ -90,6 +145,12 @@ const BoxShadowOptions = () => {
                 onChange={(e) => handleChange(e, "spread", entry)}
               />
             </Property>
+            <SelectColor
+              onUnitChange={onUnitChange}
+              clr={cardCss.boxShadow[cardCss.activeBoxShadow].color}
+              unit={cardCss.boxShadow[cardCss.activeBoxShadow].unit}
+              handleColorChange={handleColorChange}
+            />
           </Select>
         );
       })}
