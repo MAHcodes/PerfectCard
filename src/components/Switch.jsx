@@ -19,8 +19,8 @@ const Div = styled.div`
 
 const SwitchInput = styled.div`
   display: inline-flex;
-  width: 3.75rem;
-  height: 1.75rem;
+  width: 3.5rem;
+  height: 1.5rem;
   border-radius: 100vmax;
   padding: 0.25rem;
   background-color: rgba(var(--accent), 50%);
@@ -55,13 +55,13 @@ const Toggle = styled.div`
   &::before {
     content: "on";
     inset: 50% auto auto -100%;
-    transform: translate(-30%, -55%);
+    transform: translate(-50%, -55%);
     color: rgb(var(--success));
   }
   &::after {
     content: "off";
     inset: 50% -100% auto auto;
-    transform: translate(30%, -55%);
+    transform: translate(50%, -55%);
     color: rgb(var(--danger));
   }
 `;

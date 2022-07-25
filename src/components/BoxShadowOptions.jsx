@@ -103,7 +103,7 @@ const BoxShadowOptions = () => {
               onClick={handleInsetChange}
             />
             <br />
-            <Property title="X">
+            <Property title="Offset-X">
               <RangeInput
                 min="-200"
                 max="200"
@@ -116,7 +116,7 @@ const BoxShadowOptions = () => {
               />
             </Property>
             <br />
-            <Property title="Y">
+            <Property title="Offset-Y">
               <RangeInput
                 min="-100"
                 max="100"

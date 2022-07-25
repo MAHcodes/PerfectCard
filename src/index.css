@@ -19,7 +19,7 @@ body.dark {
   --gray: 75, 75, 75;
   --accent: 77, 77, 255;
   --success: 57,255,20;
-  --danger: 254,39,18;
+  --danger: 255,35,35;
 }
 
 body.light {
@@ -29,7 +29,7 @@ body.light {
   --gray: 175, 175, 175;
   --accent: 77, 77, 255;
   --success: 57,255,20;
-  --danger: 254,39,18;
+  --danger: 255,35,35;
 }
 
 @font-face {
