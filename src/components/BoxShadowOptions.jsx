@@ -77,8 +77,8 @@ const BoxShadowOptions = () => {
           inset: !cardCss.boxShadow[cardCss.activeBoxShadow].inset,
         },
       },
-    })
-  }
+    });
+  };
 
   return (
     <div>
@@ -87,11 +87,21 @@ const BoxShadowOptions = () => {
           <Select
             key={entry[0]}
             setOpen={setOpen}
-            onClick={() => setCardCss({...cardCss, activeBoxShadow: entry[0]})}
+            onClick={() =>
+              setCardCss({
+                ...cardCss,
+                activeBoxShadow:
+                  (cardCss.activeBoxShadow == entry[0] ? "" : entry[0]),
+              })
+            }
             open={open.toString()}
             title={`${[entry[0]]}`}
           >
-            <Switch title="Inset" on={entry[1].inset} onClick={handleInsetChange} />
+            <Switch
+              title="Inset"
+              on={entry[1].inset}
+              onClick={handleInsetChange}
+            />
             <br />
             <Property title="X">
               <RangeInput
@@ -148,8 +158,8 @@ const BoxShadowOptions = () => {
             </Property>
             <SelectColor
               onUnitChange={onUnitChange}
-              clr={cardCss.boxShadow[cardCss.activeBoxShadow].color}
-              unit={cardCss.boxShadow[cardCss.activeBoxShadow].unit}
+              clr={cardCss.boxShadow[cardCss.activeBoxShadow]?.color}
+              unit={cardCss.boxShadow[cardCss.activeBoxShadow]?.unit}
               handleColorChange={handleColorChange}
             />
           </Select>

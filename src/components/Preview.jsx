@@ -26,7 +26,7 @@ const Preview = () => {
       }
     });
     setGenBoxS(generatedBoxShadow);
-    console.log(generatedBoxShadow)
+    // console.log(generatedBoxShadow)
   }, [cardCss.boxShadow]);
 
   useEffect(() => {
@@ -92,7 +92,7 @@ const Preview = () => {
           <BorderRadiusControls cardCss={cardCss} setCardCss={setCardCss} />
         ) : undefined}
 
-        {optionOpen === "Box Shadow" ? (
+        {optionOpen === "Box Shadow" && cardCss.activeBoxShadow !== "" ? (
           <>
             <BoxShadowControls cardCss={cardCss} setCardCss={setCardCss} />
             <SpreadControl cardCss={cardCss} setCardCss={setCardCss} />

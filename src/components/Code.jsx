@@ -42,9 +42,9 @@ const Code = () => {
 
   const genBoxShadow = () => {
     const active = cardCss.boxShadow[cardCss.activeBoxShadow];
-    return `${active.inset ? "inset" : ""} ${active.x}px ${active.y}px ${
-      active.blur
-    }px ${active.spread}px ${active.color}`;
+    return `${active?.inset ? "inset" : ""} ${active?.x}px ${active?.y}px ${
+      active?.blur
+    }px ${active?.spread}px ${active?.color}`;
   };
 
   return (
