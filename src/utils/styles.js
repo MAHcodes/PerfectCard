@@ -75,6 +75,54 @@ const styles = {
     activeBoxShadow: 0,
     lightSource: { x: 0, y: 0 },
   },
+
+  "Windows 95": {
+    width: 200,
+    height: 200,
+    widthUnit: "px",
+    heightUnit: "px",
+    bgColor: "#c0c0c0",
+    bgUnit: "rgb",
+    borderRadius: {
+      topLeft: { x: { unit: "%", value: 0 }, y: { unit: "%", value: 0 } },
+      topRight: { x: { unit: "%", value: 0 }, y: { unit: "%", value: 0 } },
+      bottomRight: { x: { unit: "%", value: 0 }, y: { unit: "%", value: 0 } },
+      bottomLeft: { x: { unit: "%", value: 0 }, y: { unit: "%", value: 0 } },
+    },
+    allBorderRadius: 0,
+    allBorderRadiusUnit: "px",
+    boxShadow: {
+      0: {
+        x: -3,
+        y: -3,
+        inset: true,
+        color: "#a0a0a0",
+        clrUnit: "hex",
+        blur: 0,
+        spread: 0,
+      },
+      1: {
+        x: 3,
+        y: 3,
+        inset: true,
+        color: "#FFFFFF",
+        clrUnit: "hex",
+        blur: 0,
+        spread: 0,
+      },
+      2: {
+        x: 0,
+        y: 0,
+        inset: false,
+        color: "#606060",
+        clrUnit: "hex",
+        blur: 0,
+        spread: 3,
+      }
+    },
+    activeBoxShadow: 0,
+    lightSource: { x: 0, y: 0 },
+  },
 };
 
 export default styles;

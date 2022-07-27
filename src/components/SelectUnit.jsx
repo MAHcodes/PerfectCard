@@ -3,7 +3,7 @@ import styled from "styled-components";
 const SelectUnit = ({onChange, options, def }) => {
   return (
     <Wrapper>
-      <StyledSelect value={def} onChange={onChange} >
+      <StyledSelect value={def} onChange={onChange}>
         {options.map(option => (
           <option key={option} value={option}>{option}</option>
         ))}
