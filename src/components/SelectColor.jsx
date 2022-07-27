@@ -41,7 +41,7 @@ const SelectColor = ({handleColorChange, clr, unit, onUnitChange}) => {
           def={unit}
           onChange={onUnitChange}
         />
-      </Property>
+       </Property>
     </>
   );
 };

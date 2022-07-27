@@ -4,10 +4,13 @@ import Button from "./Button";
 import ArrowIcon from "./ArrowIcon";
 import Options from "./Options";
 import { CardCssContext } from "../hooks/CardCSS";
+import SelectUnit from "./SelectUnit";
+import STYLES from "../utils/styles";
 
 const Aside = () => {
   const [asideHeight, setAsideHeight] = useState(window.innerHeight);
-  const {setDefaults, asideOpen, setAsideOpen} = useContext(CardCssContext);
+  const { asideOpen, setAsideOpen } = useContext(CardCssContext);
+  const { setCardCss } = useContext(CardCssContext);
 
   const handleResize = () => {
     setAsideHeight(window.innerHeight);
@@ -27,10 +30,14 @@ const Aside = () => {
       <Wrapper height={asideHeight}>
         <H1>PerfectCard</H1>
         <P>Easiest way to create your Perfect Card.</P>
+
+        <SelectBox>
+          <SelectUnit
+            options={Object.keys(STYLES)}
+            onChange={(e) => setCardCss(STYLES[e.target.value])}
+          />
+        </SelectBox>
         <Options />
-        <BtnContainer>
-          <Button val="Reset Parameters" pad=".75em 1em" action={setDefaults} />
-        </BtnContainer>
       </Wrapper>
     </StyledAside>
   );
@@ -78,14 +85,17 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const BtnContainer = styled.div`
-  padding-inline: 2rem;
-  background-color: rgb(var(--bg-main));
-
-  & > button {
+const SelectBox = styled.div`
+  padding: 2rem 1rem 0;
+  & select {
     width: 100%;
-    font-size: var(--fz-sm);
+    padding-block: 0.5em;
+    background-color: transparent;
+    &:active,
+    &:focus {
+      background-color: transparent;
+    }
   }
-`
+`;
 
 export default Aside;

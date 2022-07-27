@@ -25,6 +25,12 @@ function App() {
 const StyledApp = styled.div`
   display: flex;
   align-items: stretch;
+
+  @media (max-width: 1250px) {
+    & {
+      flex-direction: column;
+    }
+  }
 `;
 
 export default App;

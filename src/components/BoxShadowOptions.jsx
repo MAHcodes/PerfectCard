@@ -1,9 +1,9 @@
-import Property from "./Property";
-import RangeInput from "./RangeInput";
 import { useContext, useState } from "react";
 import { CardCssContext } from "../hooks/CardCSS";
-import Select from "./Select";
 import NumberInput from "./NumberInput";
+import Property from "./Property";
+import RangeInput from "./RangeInput";
+import Select from "./Select";
 import SelectColor from "./SelectColor";
 import Switch from "./Switch";
 
