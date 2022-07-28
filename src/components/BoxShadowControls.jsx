@@ -26,6 +26,8 @@ const BoxShadowControls = () => {
     });
   };
 
+  console.log(cardCss.activeBoxShadow)
+
   const handleBlur = (e) => {
     setCardCss({
       ...cardCss,

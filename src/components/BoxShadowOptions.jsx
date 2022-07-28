@@ -80,20 +80,32 @@ const BoxShadowOptions = () => {
     });
   };
 
+  const removeBoxShadow = (idx) => {
+    delete cardCss.boxShadow[idx];
+  };
+
   return (
     <div>
-      {entries.map((entry) => {
+      {entries.map((entry, i) => {
         return (
           <Select
             key={entry[0]}
             setOpen={setOpen}
-            onClick={() =>
+            pad={i === 0 && "1rem 1rem 0"}
+            close={i !== 0 && { action: () => removeBoxShadow(i), val: "test" }}
+            onClick={(e) => {
+              console.log(e.target);
+              if (e.target.tagName === "BUTTON") {
+                setCardCss({ ...cardCss, activeBoxShadow: "" });
+                return;
+              }
               setCardCss({
                 ...cardCss,
                 activeBoxShadow:
-                  (cardCss.activeBoxShadow == entry[0] ? "" : entry[0]),
-              })
-            }
+                  // eslint-disable-next-line
+                  cardCss.activeBoxShadow == entry[0] ? "" : entry[0],
+              });
+            }}
             open={open.toString()}
             title={`${[entry[0]]}`}
           >

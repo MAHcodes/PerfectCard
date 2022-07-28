@@ -12,7 +12,7 @@ function App() {
       </StyledApp>
 
       <a
-        href="https://github.com/mhmdali102/perfect-card"
+        href="https://github.com/mhmdali102/PerfectCard"
         target="_blank"
         rel="noreferrer noopener"
       >
@@ -26,7 +26,7 @@ const StyledApp = styled.div`
   display: flex;
   align-items: stretch;
 
-  @media (max-width: 1250px) {
+  @media (max-width: 1000px) {
     & {
       flex-direction: column;
     }

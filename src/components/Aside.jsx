@@ -5,7 +5,7 @@ import ArrowIcon from "./ArrowIcon";
 import Options from "./Options";
 import { CardCssContext } from "../hooks/CardCSS";
 import SelectUnit from "./SelectUnit";
-import STYLES from "../utils/styles";
+import STYLES from "../variables/styles";
 
 const Aside = () => {
   const [asideHeight, setAsideHeight] = useState(window.innerHeight);

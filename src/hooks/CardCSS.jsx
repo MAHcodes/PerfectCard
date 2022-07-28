@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import STYLES from "../utils/styles";
+import STYLES from "../variables/styles";
 
 export const CardCssContext = createContext(null);
 

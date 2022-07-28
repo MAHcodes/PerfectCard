@@ -13,20 +13,15 @@ const Preview = () => {
   const parentRef = useRef(null);
 
   useEffect(() => {
-    let generatedBoxShadow = "";
-    Object.values(cardCss.boxShadow).map((shadow, i) => {
-      if (i >= Object.values(cardCss.boxShadow).length - 1) {
-        generatedBoxShadow += `${shadow.inset ? "inset" : ""} ${shadow.x}px ${
-          shadow.y
-        }px ${shadow.blur}px ${shadow.spread}px ${shadow.color}`;
-      } else {
-        generatedBoxShadow += `${shadow.inset ? "inset" : ""} ${shadow.x}px ${
-          shadow.y
-        }px ${shadow.blur}px ${shadow.spread}px ${shadow.color},`;
-      }
-    });
-    setGenBoxS(generatedBoxShadow);
-    // console.log(generatedBoxShadow)
+    setGenBoxS(
+      Object.values(cardCss.boxShadow).map((shadow, i) => {
+        return `${shadow.inset ? "inset " : ""}${shadow.x}px ${shadow.y}px ${
+          shadow.blur
+        }px ${shadow.spread}px ${shadow.color}${
+          i >= Object.values(cardCss.boxShadow).length - 1 ? "" : ","
+        }`;
+      }).join("")
+    );
   }, [cardCss.boxShadow]);
 
   useEffect(() => {

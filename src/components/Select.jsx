@@ -1,15 +1,27 @@
 import styled from "styled-components";
 import ArrowIcon from "./ArrowIcon";
+import Button from "./Button";
 
-const Select = ({ title, open, children, setOpen, onClick  }) => {
+const Select = ({ title, open, children, setOpen, onClick, pad, close }) => {
   const active = open === title;
   return (
-    <Div>
-      <Title active={active} onClick={() => {active ? setOpen("") : setOpen(title); onClick && onClick()} }>
+    <Div pad={pad}>
+      <Title
+        active={active}
+        onClick={(e) => {
+          active ? setOpen("") : setOpen(title);
+          onClick && onClick(e);
+        }}
+      >
         <Icon active={active}>
-          <ArrowIcon fill={active ? "rgba(var(--accent), 80%)" : "rgb(var(--fg-main))"} />
+          <ArrowIcon
+            fill={active ? "rgba(var(--accent), 80%)" : "rgb(var(--fg-main))"}
+          />
         </Icon>
-        <Text active={active}>{title}</Text>
+        <Text active={active}>
+          <p>{title}</p>
+          { close && <Button val={close.val} action={close.action} pad={close.pad} />}
+        </Text>
       </Title>
       <Options active={active}>{children}</Options>
     </Div>
@@ -17,7 +29,7 @@ const Select = ({ title, open, children, setOpen, onClick  }) => {
 };
 
 const Div = styled.div`
-  padding: 2rem 1rem 0;
+  padding: ${(props) => props.pad || "2rem 1rem 0"};
   color: rgb(var(--fg-main));
 `;
 
@@ -39,11 +51,14 @@ const Icon = styled.span`
   align-items: center;
   justify-content: flex-start;
   transition: transform var(--transition-d) var(--transition-tf);
-  transform: ${props => props.active && "rotate(90deg)"};
+  transform: ${(props) => props.active && "rotate(90deg)"};
 `;
 
-const Text = styled.p`
-  display: inline;
+const Text = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   font-size: var(--fz-base);
   transition: color var(--transition-d) var(--transition-tf);
 `;
