@@ -80,8 +80,8 @@ const BoxShadowOptions = () => {
     });
   };
 
-  const removeBoxShadow = (idx) => {
-    delete cardCss.boxShadow[idx];
+  const removeBoxShadow = (key) => {
+    delete cardCss.boxShadow[key];
   };
 
   return (
@@ -92,9 +92,8 @@ const BoxShadowOptions = () => {
             key={entry[0]}
             setOpen={setOpen}
             pad={i === 0 && "1rem 1rem 0"}
-            close={i !== 0 && { action: () => removeBoxShadow(i), val: "test" }}
+            close={i !== 0 && { action: () => removeBoxShadow(entry[0]), val: "test" }}
             onClick={(e) => {
-              console.log(e.target);
               if (e.target.tagName === "BUTTON") {
                 setCardCss({ ...cardCss, activeBoxShadow: "" });
                 return;
