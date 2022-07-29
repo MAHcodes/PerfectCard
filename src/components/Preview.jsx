@@ -14,13 +14,15 @@ const Preview = () => {
 
   useEffect(() => {
     setGenBoxS(
-      Object.values(cardCss.boxShadow).map((shadow, i) => {
-        return `${shadow.inset ? "inset " : ""}${shadow.x}px ${shadow.y}px ${
-          shadow.blur
-        }px ${shadow.spread}px ${shadow.color}${
-          i >= Object.values(cardCss.boxShadow).length - 1 ? "" : ","
-        }`;
-      }).join("")
+      Object.values(cardCss.boxShadow)
+        .map((shadow, i) => {
+          return `${shadow.inset ? "inset " : ""}${shadow.x}px ${shadow.y}px ${
+            shadow.blur
+          }px ${shadow.spread}px ${shadow.color}${
+            i >= Object.values(cardCss.boxShadow).length - 1 ? "" : ","
+          }`;
+        })
+        .join("")
     );
   }, [cardCss.boxShadow]);
 
@@ -68,6 +70,7 @@ const Preview = () => {
 
   return (
     <Box boxShadow={optionOpen === "Box Shadow"} ref={parentRef}>
+<ResizeBox>
       <Card
         style={{
           width: `${cardCss.width}${cardCss.widthUnit}`,
@@ -83,9 +86,9 @@ const Preview = () => {
         <h2>Preview</h2>
         {resizeListener}
 
-        {optionOpen === "Border Radius" ? (
+        {optionOpen === "Border Radius" && (
           <BorderRadiusControls cardCss={cardCss} setCardCss={setCardCss} />
-        ) : undefined}
+        )}
 
         {optionOpen === "Box Shadow" && cardCss.activeBoxShadow !== "" ? (
           <>
@@ -94,9 +97,57 @@ const Preview = () => {
           </>
         ) : undefined}
       </Card>
+
+        {optionOpen === "Basic Styles" && <ResizeIndicator />}
+      </ResizeBox>
+
     </Box>
   );
 };
+
+const ResizeIndicator = () => (
+  <Resize>
+    <p>resize me</p>
+
+    <svg
+      width="45"
+      height="50"
+      viewBox="0 0 52 57"
+      fill="none"
+    >
+      <path
+        d="M3 3C14.2417 18.3749 26.6451 31.7107 39.4178 45.7647C40.1391 46.5584 47.861 54.6835 47.861 53.9537C47.861 47.7689 41.1725 42.3527 40.5368 36.6658C39.8585 30.5995 44.6964 48.4818 48.7765 53.0438C50.2515 54.6929 43.9756 51.5723 43.0799 51.224C37.732 49.1442 32.4587 49.4043 26.8038 49.4043"
+        stroke="#FFFFFF"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+    </svg>
+  </Resize>
+);
+
+const ResizeBox = styled.div`
+  display: flex;
+  position: relative;
+  margin: auto;
+`
+
+const Resize = styled.div`
+  position: absolute;
+  inset: auto 2px 0 auto;
+  mix-blend-mode: difference;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  pointer-events: none;
+  & > p {
+    padding-inline-end: 1rem;
+    color: #fff;
+  }
+  & > svg {
+    width 30px;
+    height: 35px;
+  }
+`;
 
 const Box = styled.div`
   min-height: 20rem;
