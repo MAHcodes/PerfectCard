@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
+import styled from "styled-components";
 import { CardCssContext } from "../hooks/CardCSS";
+import Button from "./Button";
 import NumberInput from "./NumberInput";
 import Property from "./Property";
 import RangeInput from "./RangeInput";
@@ -82,6 +84,30 @@ const BoxShadowOptions = () => {
 
   const removeBoxShadow = (key) => {
     delete cardCss.boxShadow[key];
+    setCardCss({
+      ...cardCss,
+      activeBoxShadow: "",
+    });
+  };
+
+  const AddBoxShadow = () => {
+    setOpen(Object.keys(cardCss.boxShadow).length);
+    setCardCss({
+      ...cardCss,
+      activeBoxShadow: Object.keys(cardCss.boxShadow).length,
+      boxShadow: {
+        ...cardCss.boxShadow,
+        [Object.keys(cardCss.boxShadow).length]: {
+          x: 0,
+          y: 0,
+          inset: false,
+          color: "#000000",
+          clrUnit: "hex",
+          blur: 0,
+          spread: 0,
+        },
+      },
+    });
   };
 
   return (
@@ -92,7 +118,9 @@ const BoxShadowOptions = () => {
             key={entry[0]}
             setOpen={setOpen}
             pad={i === 0 && "1rem 1rem 0"}
-            close={i !== 0 && { action: () => removeBoxShadow(entry[0]), val: "test" }}
+            close={
+              i !== 0 && { action: () => removeBoxShadow(entry[0]), val: "X" }
+            }
             onClick={(e) => {
               if (e.target.tagName === "BUTTON") {
                 setCardCss({ ...cardCss, activeBoxShadow: "" });
@@ -176,8 +204,19 @@ const BoxShadowOptions = () => {
           </Select>
         );
       })}
+      <BtnContainer>
+        <Button val="+ Add Box Shadow" pad=".6em" action={AddBoxShadow} />
+      </BtnContainer>
     </div>
   );
 };
+
+const BtnContainer = styled.div`
+  padding-inline: 1rem;
+  & > button {
+    width: 100%;
+    margin-block-start: 1.5rem;
+  }
+`;
 
 export default BoxShadowOptions;
