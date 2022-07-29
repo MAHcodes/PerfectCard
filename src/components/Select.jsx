@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ArrowIcon from "./ArrowIcon";
 import Button from "./Button";
 
-const Select = ({ title, open, children, setOpen, onClick, pad, close }) => {
+const Select = ({ title, open, setOpen, children, onClick, pad, close }) => {
   const active = open === title;
   return (
     <Div pad={pad}>

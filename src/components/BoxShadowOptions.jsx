@@ -11,7 +11,6 @@ import Switch from "./Switch";
 
 const BoxShadowOptions = () => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
-  const [open, setOpen] = useState(cardCss.activeBoxShadow);
   const entries = Object.entries(cardCss.boxShadow);
 
   const onUnitChange = (e) => {
@@ -84,14 +83,10 @@ const BoxShadowOptions = () => {
 
   const removeBoxShadow = (key) => {
     delete cardCss.boxShadow[key];
-    setCardCss({
-      ...cardCss,
-      activeBoxShadow: "",
-    });
+    setCardCss({ ...cardCss, activeBoxShadow: "" });
   };
 
   const AddBoxShadow = () => {
-    setOpen(Object.keys(cardCss.boxShadow).length);
     setCardCss({
       ...cardCss,
       activeBoxShadow: Object.keys(cardCss.boxShadow).length,
@@ -116,11 +111,11 @@ const BoxShadowOptions = () => {
         return (
           <Select
             key={entry[0]}
-            setOpen={setOpen}
             pad={i === 0 && "1rem 1rem 0"}
             close={
               i !== 0 && { action: () => removeBoxShadow(entry[0]), val: "X" }
             }
+            setOpen={val => {setCardCss({...cardCss, activeBoxShadow: val})}}
             onClick={(e) => {
               if (e.target.tagName === "BUTTON") {
                 setCardCss({ ...cardCss, activeBoxShadow: "" });
@@ -133,7 +128,7 @@ const BoxShadowOptions = () => {
                   cardCss.activeBoxShadow == entry[0] ? "" : entry[0],
               });
             }}
-            open={open.toString()}
+            open={cardCss.activeBoxShadow.toString()}
             title={`${[entry[0]]}`}
           >
             <Switch
