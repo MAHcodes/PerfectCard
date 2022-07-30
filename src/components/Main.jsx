@@ -4,6 +4,7 @@ import Preview from "./Preview";
 import styled from "styled-components";
 import { CardCssContext } from "../hooks/CardCSS";
 import { useContext } from "react";
+import Footer from "./Footer";
 
 const Main = () => {
   const { asideOpen } = useContext(CardCssContext);
@@ -13,13 +14,15 @@ const Main = () => {
       <Header />
       <Preview />
       <Code />
+      <Footer />
     </StyledMain>
   )
 }
 
 const StyledMain = styled.main`
   flex: ${props => props.asideOpen ? ".65" : "1"};
-  padding: 1rem 5rem;
+  padding-block-start: 1rem;
+  padding-inline: 5rem;
   overflow: auto;
   @media (max-width: 650px) {
     padding-inline: 2rem;
