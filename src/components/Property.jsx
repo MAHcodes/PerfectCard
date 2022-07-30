@@ -15,6 +15,10 @@ const Div = styled.div`
   justify-content: flex-end;
   gap: 1rem;
 
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+
   & > .hue-picker {
     flex: 1;
     cursor: pointer;

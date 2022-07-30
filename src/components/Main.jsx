@@ -21,6 +21,13 @@ const StyledMain = styled.main`
   flex: ${props => props.asideOpen ? ".65" : "1"};
   padding: 1rem 5rem;
   overflow: auto;
+  @media (max-width: 650px) {
+    padding-inline: 2rem;
+  }
+  @media (max-width: 350px) {
+    padding-inline: 1rem;
+  }
+
 `
 
 export default Main

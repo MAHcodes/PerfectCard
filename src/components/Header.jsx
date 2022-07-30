@@ -72,16 +72,18 @@ const Header = () => {
   return (
     <Hdr>
       <H1>PerfectCart</H1>
-      <SelectUnit
-        options={[...Object.keys(BACKGROUNDS)]}
-        onChange={handleBackground}
-        def={bg}
-      />
-      <Button
-        border
-        val={dark ? <SunIcon /> : <MoonIcon />}
-        action={toggleTheme}
-      />
+      <Controls>
+        <SelectUnit
+          options={[...Object.keys(BACKGROUNDS)]}
+          onChange={handleBackground}
+          def={bg}
+        />
+        <Button
+          border
+          val={dark ? <SunIcon /> : <MoonIcon />}
+          action={toggleTheme}
+        />
+      </Controls>
     </Hdr>
   );
 };
@@ -120,6 +122,23 @@ const Hdr = styled.header`
   position: relative;
   z-index: 20;
 
+  @media (max-width: 650px) {
+    flex-direction: column;
+  }
+`;
+
+const H1 = styled.h1`
+  font-size: var(--fz-md);
+  margin-inline-end: auto;
+  font-weight: bold;
+`;
+
+const Controls = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto; 
+
   & > span > select {
     width: auto;
     padding-block: 0.35rem;
@@ -130,12 +149,6 @@ const Hdr = styled.header`
       background-color: transparent;
     }
   }
-`;
-
-const H1 = styled.h1`
-  font-size: var(--fz-md);
-  margin-inline-end: auto;
-  font-weight: bold;
 `;
 
 export default Header;
