@@ -48,7 +48,7 @@ const Code = () => {
           return `${shadow.inset ? "inset" : ""} ${shadow.x}px ${shadow.y}px ${
             shadow.blur
           }px ${shadow.spread}px ${shadow.color}${
-            i >= Object.values(cardCss.boxShadow).length - 1 ? "" : ","
+            i >= Object.values(cardCss.boxShadow).length - 1 ? "" : ", "
           }`;
         })
         .join("")

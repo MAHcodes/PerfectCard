@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { CardCssContext } from "../hooks/CardCSS";
 import Button from "./Button";
@@ -115,7 +115,9 @@ const BoxShadowOptions = () => {
             close={
               i !== 0 && { action: () => removeBoxShadow(entry[0]), val: "X" }
             }
-            setOpen={val => {setCardCss({...cardCss, activeBoxShadow: val})}}
+            setOpen={(val) => {
+              setCardCss({ ...cardCss, activeBoxShadow: val });
+            }}
             onClick={(e) => {
               if (e.target.tagName === "BUTTON") {
                 setCardCss({ ...cardCss, activeBoxShadow: "" });

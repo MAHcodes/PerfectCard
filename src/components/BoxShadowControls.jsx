@@ -1,11 +1,22 @@
 import styled from "styled-components";
 import Draggable from "react-draggable";
 import { CardCssContext } from "../hooks/CardCSS";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import RangeInput from "./RangeInput";
 
 const BoxShadowControls = () => {
   const { cardCss, setCardCss } = useContext(CardCssContext);
+
+  useEffect(() => {
+    setCardCss({
+      ...cardCss,
+      lightSource: {
+        x: -Math.round(cardCss.boxShadow[cardCss.activeBoxShadow].x * 2.5),
+        y: -Math.round(cardCss.boxShadow[cardCss.activeBoxShadow].y * 2),
+      }
+    })
+    // eslint-disable-next-line
+  }, []);
 
   const handleDrag = (data) => {
     setCardCss({
@@ -16,7 +27,6 @@ const BoxShadowControls = () => {
           ...cardCss.boxShadow[cardCss.activeBoxShadow],
           x: -Math.round(data.x / 2.5),
           y: -Math.round(data.y / 2),
-          // deg: (Math.atan2(currentY, currentX) * 180) / Math.PI,
         },
       },
       lightSource: {
@@ -25,8 +35,6 @@ const BoxShadowControls = () => {
       },
     });
   };
-
-  console.log(cardCss.activeBoxShadow)
 
   const handleBlur = (e) => {
     setCardCss({

@@ -44,6 +44,10 @@ const Title = styled.div`
   &:hover p {
     color: rgba(var(--accent), 85%);
   }
+
+  & button {
+    padding-inline: .4em;
+  }
 `;
 
 const Icon = styled.span`
