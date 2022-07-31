@@ -2,10 +2,12 @@
   "name": "PerfectCard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mhmdali102.github.io/PerfectCard",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
@@ -18,7 +20,8 @@
   "scripts": {
     "vite": "vite --open",
     "start": "vite start",
-    "build": "vite build"
+    "build": "vite build",
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
