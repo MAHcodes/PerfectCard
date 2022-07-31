@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <h1>
-        Made with by{" "}
+        Made with ❤️ by{" "}
         <a
           href="https://github.com/mhmdali102"
           target="_blank"

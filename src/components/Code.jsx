@@ -42,17 +42,27 @@ const Code = () => {
   }`;
 
   useEffect(() => {
-    setGenBoxS(
-      Object.values(cardCss.boxShadow)
-        .map((shadow, i) => {
-          return `${shadow.inset ? "inset" : ""} ${shadow.x}px ${shadow.y}px ${
-            shadow.blur
-          }px ${shadow.spread}px ${shadow.color}${
-            i >= Object.values(cardCss.boxShadow).length - 1 ? "" : ", "
-          }`;
-        })
-        .join("")
-    );
+    let noBoxShadow = true;
+    Object.keys(cardCss.boxShadow).forEach((item) => {
+      const { x, y, blur, spread } = cardCss.boxShadow[item];
+      noBoxShadow = !(x || y || blur || spread);
+    });
+
+    if (noBoxShadow) {
+      setGenBoxS("");
+    } else {
+      setGenBoxS(
+        Object.values(cardCss.boxShadow)
+          .map((shadow, i) => {
+            return `${shadow.inset ? "inset" : ""} ${shadow.x}px ${
+              shadow.y
+            }px ${shadow.blur}px ${shadow.spread}px ${shadow.color}${
+              i >= Object.values(cardCss.boxShadow).length - 1 ? "" : ", "
+            }`;
+          })
+          .join("")
+      );
+    }
   }, [cardCss.boxShadow]);
 
   return (
@@ -89,9 +99,13 @@ const Code = () => {
               />
             </>
           ) : undefined}
-          <br />
-          <Comment>{"/* Box Shadow */"}</Comment>
-          <CSSPropVal prop="box-shadow" val={genBoxS} />
+          {genBoxS && (
+            <>
+              <br />
+              <Comment>{"/* Box Shadow */"}</Comment>
+              <CSSPropVal prop="box-shadow" val={genBoxS} />
+            </>
+          )}
           {"}"}
         </code>
       </Pre>
