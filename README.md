@@ -1,70 +1,129 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <a href="https://github.com/mhmdali102/PerfectCard">
+    <img src="images/logo.svg" alt="Logo" width="100" height="100">
+  </a>
 
-## Available Scripts
+  <h3 align="center">PerfectCard</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    Claimed to be the easiest way to create your Perfect Card 🎴
+    <br />
 
-### `yarn start`
+  <span>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  [![Contributors][contributors-shield]][contributors-url]
+  [![Forks][forks-shield]][forks-url]
+  [![Stargazers][stars-shield]][stars-url]
+  [![Issues][issues-shield]][issues-url]
+  [![MIT License][license-shield]][license-url]
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  </span>
+    <a href="https://mhmdali102.github.io/PerfectCard">View Demo</a>
+    ·
+    <a href="https://github.com/mhmdali102/PerfectCard/issues">Report Bug</a>
+  </p>
+</div>
 
-### `yarn test`
+<hr>
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<details>
+  <summary> 📖 Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About the project</a>
+      <ul>
+        <li><a href="#tech-stack">Tech Stack</a></li>
+      </ul>
+    </li>
+    <li>
+     <a href="#features">Features</a>
+     <ul>
+     <li><a href="#todo">TODO</a></li>
+     </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-### `yarn build`
+## :dart: About the project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[![PerfectCard Screen Shot][perfectcard-screenshot]](https://mhmdali102.github.io/PerfectCard)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+PerfectCard aims to help you create your perfect card in an easy and fast way, using interactive tools that allow you to focus on creativity and not on coding struggles.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### :hammer_and_wrench: Tech Stack
 
-### `yarn eject`
+PerfectCard was built with [![ReactJS][react.js]][react-url], client-only (no backend), and some open-source libraries are used, you may find the complete list in the [package.json](https://github.com/mhmdali102/PerfectCard/blob/main/package.json) file of the repository.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<p align="right">(<a href="#top">⬆️</a>)</p>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## :gear: Features
+- [x] Totally interactive ( inputs + gui / guwee ).
+- [x] Border radius full control.
+- [x] Box shadow full control.
+- [x] Pre-defined styles.
+- [x] Light/Dark theme.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### :pushpin: TODO
+- [ ] Borders full control.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<p align="right">(<a href="#top">⬆️</a>)</p>
 
-## Learn More
+## :eyes: Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-### Code Splitting
+1. Fork the Project
+2. Create your Feature Branch
+```bash
+git checkout -b feature/AmazingFeature
+```
+3. Commit your Changes
+```bash
+git commit -m 'Add some AmazingFeature'
+```
+4. Push to the Branch
+```bash
+git push origin feature/AmazingFeature
+```
+5. Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<p align="right">(<a href="#top">⬆️</a>)</p>
 
-### Analyzing the Bundle Size
+## :warning: License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Distributed under the GNU General Public License v3.0 license. See [`LICENSE`](https://github.com/mhmdali102/PerfectCard/blob/main/LICENSE) for more information.
 
-### Making a Progressive Web App
+<p align="right">(<a href="#top">⬆️</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- CONTACT -->
 
-### Advanced Configuration
+## :envelope_with_arrow: Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Mhmd Ali Hsen - [@mhmdalihsen](https://twitter.com/mhmdalihsen) - mhmdalihsen102@gmail.com
 
-### Deployment
+Project Link: [https://github.com/mhmdali102/PerfectCard](https://github.com/mhmdali102/PerfectCard)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<p align="right">(<a href="#top">⬆️</a>)</p>
 
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[contributors-shield]: https://img.shields.io/github/contributors/mhmdali102/PerfectCard?style=for-the-badge
+[contributors-url]: https://github.com/mhmdali102/PerfectCard/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/mhmdali102/PerfectCard.svg?style=for-the-badge
+[forks-url]: https://github.com/mhmdali102/PerfectCard/network/members
+[stars-shield]: https://img.shields.io/github/stars/mhmdali102/PerfectCard.svg?style=for-the-badge
+[stars-url]: https://github.com/mhmdali102/PerfectCard/stargazers
+[issues-shield]: https://img.shields.io/github/issues/mhmdali102/PerfectCard.svg?style=for-the-badge
+[issues-url]: https://github.com/mhmdali102/PerfectCard/issues
+[license-shield]: https://img.shields.io/github/license/mhmdali102/PerfectCard.svg?style=for-the-badge
+[license-url]: https://github.com/mhmdali102/PerfectCard/blob/master/LICENSE.txt
+[perfectcard-screenshot]: images/screenshot.png
+[react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[react-url]: https://reactjs.org/
