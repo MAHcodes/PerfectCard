@@ -111,7 +111,7 @@ const BoxShadowOptions = () => {
         return (
           <Select
             key={entry[0]}
-            pad={i === 0 && "1rem 1rem 0"}
+            pad=".75rem .25rem"
             close={
               i !== 0 && { action: () => removeBoxShadow(entry[0]), val: "X" }
             }
@@ -212,7 +212,7 @@ const BtnContainer = styled.div`
   padding-inline: 1rem;
   & > button {
     width: 100%;
-    margin-block-start: 1.5rem;
+    margin-block-start: .5rem;
   }
 `;
 

@@ -1,17 +1,45 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
+import Tooltip from "./Tooltip";
 
 const CodeHeader = ({ codeRef }) => {
+  const [copied, setCopied] = useState({ success: false, error: false });
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(codeRef.current.innerText);
+    navigator.clipboard.writeText(codeRef.current.innerText).then(
+      () => {
+        setCopied({ error: false, success: true });
+        setTimeout(() => {
+          setCopied({ error: false, success: false });
+        }, 3000);
+      },
+      (err) => {
+        setCopied({ error: true, success: false });
+        console.log(err);
+        setTimeout(() => {
+          setCopied({ error: false, success: false });
+        }, 3000);
+      }
+    );
   };
 
   return (
     <Div>
       <H2>Read only code preview</H2>
-      <div>
-        <Button action={handleCopy} pad=".45rem" border val={<CopyIcon />} />
-      </div>
+      <BtnContainer>
+        {copied.success && (
+          <Tooltip text={copied.success && "📋 Copied to clipboard!"} />
+        )}
+        {copied.error && <Tooltip error text={copied.error && "🐞 Error!"} />}
+        <Button
+          title="Copy Code"
+          action={handleCopy}
+          pad=".45rem"
+          border
+          val={<CopyIcon />}
+        />
+      </BtnContainer>
     </Div>
   );
 };
@@ -38,6 +66,10 @@ const Div = styled.div`
 `;
 
 const H2 = styled.h2``;
+
+const BtnContainer = styled.div`
+  position: relative;
+`;
 
 const Svg = styled.svg`
   & > path {

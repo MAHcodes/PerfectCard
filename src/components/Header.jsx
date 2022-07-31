@@ -77,11 +77,13 @@ const Header = () => {
           options={[...Object.keys(BACKGROUNDS)]}
           onChange={handleBackground}
           def={bg}
+          title="Change Background"
         />
         <Button
           border
           val={dark ? <SunIcon /> : <MoonIcon />}
           action={toggleTheme}
+          title = {dark ? "Switch to Light Theme" : "Switch to Dark Theme"}
         />
       </Controls>
     </Hdr>

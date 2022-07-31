@@ -25,6 +25,7 @@ const Aside = () => {
     <StyledAside open={asideOpen}>
       <Button
         val={<ArrowIcon fill="rgba(var(--fg-main), 65%)" open={asideOpen} />}
+        title={asideOpen ? "Collapse Sidebar" : "Expand Sidebar"}
         action={() => setAsideOpen(!asideOpen)}
       />
       <Wrapper height={asideHeight}>
@@ -35,6 +36,7 @@ const Aside = () => {
           <SelectUnit
             options={Object.keys(STYLES)}
             onChange={(e) => setCardCss(STYLES[e.target.value])}
+            title="Pre-defined Styles"
           />
         </SelectBox>
         <Options />

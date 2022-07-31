@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const Button = ({ val, action, pad }) => {
+const Button = ({ val, action, pad, title }) => {
   return (
-    <Btn pad={pad} type="button" onClick={action}>
+    <Btn title={title} pad={pad} type="button" onClick={action}>
       {val}
     </Btn>
   );
