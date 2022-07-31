@@ -84,7 +84,7 @@ const Preview = () => {
           }}
         >
           <h2>Preview</h2>
-          {resizeListener}
+        {resizeListener}
 
           {optionOpen === "Border Radius" && (
             <BorderRadiusControls cardCss={cardCss} setCardCss={setCardCss} />
@@ -161,10 +161,16 @@ const Card = styled.div`
   overflow: auto;
   margin: auto;
   position: relative;
+  flex-direction: column;
+  gap: 1rem;
 
   color: rgb(var(--white));
+
+  & > p ,
   & > h2 {
     mix-blend-mode: difference;
+    white-space: nowrap;
+    user-select: none;
   }
 `;
 

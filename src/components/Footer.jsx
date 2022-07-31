@@ -16,6 +16,7 @@ const Footer = () => {
       <nav>
         <ul>
           <li>About</li>
+          <li>Contact Us</li>
         </ul>
       </nav>
     </StyledFooter>

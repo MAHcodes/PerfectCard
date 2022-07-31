@@ -28,6 +28,7 @@ const BorderRadiusControls = ({ cardCss, setCardCss }) => {
         bounds={{ right: 100, top: -100, left: 0, bottom: 0 }}
         className="bottomLeft"
       />
+      <p>💡 Drag the angles</p>
     </>
   );
 };

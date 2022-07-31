@@ -29,7 +29,11 @@ const Aside = () => {
         action={() => setAsideOpen(!asideOpen)}
       />
       <Wrapper height={asideHeight}>
-        <H1>PerfectCard</H1>
+        <H1>
+          <span>
+
+          </span>
+          PerfectCard</H1>
         <P>Easiest way to create your Perfect Card.</P>
 
         <SelectBox>
