@@ -1,3 +1,4 @@
+<h5 align="center">WIP...</h5>
 <div id="top"></div>
 
 <div align="center">
@@ -20,9 +21,9 @@
   [![MIT License][license-shield]][license-url]
 
   </span>
-    <a href="https://mhmdali102.github.io/PerfectCard">View Demo</a>
+    <a href="https://mhmdali102.github.io/PerfectCard">👁️ View Demo</a>
     ·
-    <a href="https://github.com/mhmdali102/PerfectCard/issues">Report Bug</a>
+    <a href="https://github.com/mhmdali102/PerfectCard/issues">🐞 Report Bug</a>
   </p>
 </div>
 
@@ -33,20 +34,20 @@
   <summary> 📖 Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About the project</a>
+      <a href="#dart-about-the-project">About the project</a>
       <ul>
-        <li><a href="#tech-stack">Tech Stack</a></li>
+        <li><a href="#hammer_and_wrench-tech-stack">Tech Stack</a></li>
       </ul>
     </li>
     <li>
-     <a href="#features">Features</a>
+     <a href="#gear-features">Features</a>
      <ul>
-     <li><a href="#todo">TODO</a></li>
+     <li><a href="#pushpin-todo">TODO</a></li>
      </ul>
     </li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#eyes-contributing">Contributing</a></li>
+    <li><a href="#warning-license">License</a></li>
+    <li><a href="#envelope_with_arrow-contact">Contact</a></li>
   </ol>
 </details>
 
